@@ -47,6 +47,25 @@ See [`.env.example`](.env.example).
 
 No secrets are needed. Player tokens are random 256-bit values that the server issues; it stores only their SHA-256 hash.
 
+### Deploy to Vercel
+
+Vercel (the free Hobby plan is enough) hosts the game as a static site in **local-only mode**. The leaderboard server isn't deployed there. Import the repository and use these settings:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | Vite |
+| Root directory | `./` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+| Install command | default (`npm install`) |
+| Node.js version | 24.x (taken from `engines` in `package.json`) |
+| Environment variables | none |
+
+- **Leave `VITE_VOID_API_URL` unset.** If it's set to `/api`, Stats tries to reach a server that isn't there and shows "No signal".
+- **No `vercel.json` is needed.** The router uses hashes (`/#/stages`, `/#/flight/01`), so every page loads from `/`. Built files are content-hashed under `/assets/`.
+- **`server/` and `data/` aren't used by the static build.** They stay for the self-hosted leaderboard (`npm start`).
+- **No other runtime dependencies.** Fonts load from Google Fonts. Sound is synthesized with Web Audio, and runs are saved in the browser's `localStorage`.
+
 ## Scripts
 
 | Command | What it does |
