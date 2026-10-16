@@ -17,6 +17,7 @@ data/*.db-*
 *.log
 .DS_Store
 
-# Claude Code personal settings
+# Claude Code personal settings and instructions (kept on this machine only)
 .claude/settings.local.json
+CLAUDE.md
 CLAUDE.local.md
