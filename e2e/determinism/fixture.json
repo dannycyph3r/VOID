@@ -1,0 +1,3667 @@
+{
+  "rulesVersion": 1,
+  "node": "v26.7.0",
+  "cases": [
+    {
+      "name": "stage 01 reference",
+      "inputs": {
+        "v": 1,
+        "stage": "01",
+        "seed": 0,
+        "angle": 20,
+        "power": 74,
+        "bursts": []
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 2722,
+        "time": 22.683333333333334,
+        "fuel": 0,
+        "score": 227,
+        "cause": null
+      },
+      "x": 987.8528108278769,
+      "y": 175.6667952209858,
+      "xBits": "408eded28e7bbb3f",
+      "yBits": "4065f55662ee686b",
+      "pathPoints": 2723,
+      "pathHash": "7f426959"
+    },
+    {
+      "name": "stage 02 reference",
+      "inputs": {
+        "v": 1,
+        "stage": "02",
+        "seed": 0,
+        "angle": 620,
+        "power": 78,
+        "bursts": []
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 2921,
+        "time": 24.341666666666665,
+        "fuel": 0,
+        "score": 243,
+        "cause": null
+      },
+      "x": 1016.4368361220144,
+      "y": 139.4464015569965,
+      "xBits": "408fc37ea3efce1b",
+      "yBits": "40616e48ebeb05df",
+      "pathPoints": 2922,
+      "pathHash": "c56a1030"
+    },
+    {
+      "name": "stage 03 reference",
+      "inputs": {
+        "v": 1,
+        "stage": "03",
+        "seed": 0,
+        "angle": 180,
+        "power": 66,
+        "bursts": []
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 3125,
+        "time": 26.041666666666668,
+        "fuel": 0,
+        "score": 260,
+        "cause": null
+      },
+      "x": 1010.2944402481547,
+      "y": 137.3652287874248,
+      "xBits": "408f925b037d239b",
+      "yBits": "40612baff4483183",
+      "pathPoints": 3126,
+      "pathHash": "ba2854f4"
+    },
+    {
+      "name": "stage 04 reference",
+      "inputs": {
+        "v": 1,
+        "stage": "04",
+        "seed": 0,
+        "angle": 755,
+        "power": 53,
+        "bursts": []
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 4456,
+        "time": 37.13333333333333,
+        "fuel": 0,
+        "score": 371,
+        "cause": null
+      },
+      "x": 1000.670612306054,
+      "y": 178.67800184485836,
+      "xBits": "408f455d69fc1660",
+      "yBits": "406655b230ecc96b",
+      "pathPoints": 4457,
+      "pathHash": "2ce1781a"
+    },
+    {
+      "name": "stage 05 reference",
+      "inputs": {
+        "v": 1,
+        "stage": "05",
+        "seed": 0,
+        "angle": -635,
+        "power": 67,
+        "bursts": []
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 3322,
+        "time": 27.683333333333334,
+        "fuel": 0,
+        "score": 277,
+        "cause": null
+      },
+      "x": 1015.9346899207443,
+      "y": 587.3869249119691,
+      "xBits": "408fbf7a3eb58bfb",
+      "yBits": "40825b186c169752",
+      "pathPoints": 3323,
+      "pathHash": "8d772464"
+    },
+    {
+      "name": "stage 06 reference",
+      "inputs": {
+        "v": 1,
+        "stage": "06",
+        "seed": 0,
+        "angle": 280,
+        "power": 28,
+        "bursts": [
+          [
+            4800,
+            0
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 6557,
+        "time": 54.641666666666666,
+        "fuel": 2.4,
+        "score": 606,
+        "cause": null
+      },
+      "x": 1052.577842588809,
+      "y": 114.84137059768887,
+      "xBits": "4090724fb5f7b4af",
+      "yBits": "405cb5d9041038f0",
+      "pathPoints": 6558,
+      "pathHash": "bb5743b9"
+    },
+    {
+      "name": "daily 0 reference (seed 20260120)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260120,
+        "angle": -185,
+        "power": 78,
+        "bursts": []
+      },
+      "template": 0,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 2542,
+        "time": 21.183333333333334,
+        "fuel": 0,
+        "score": 212,
+        "cause": null
+      },
+      "x": 1015.9589215069662,
+      "y": 572.3980231375112,
+      "xBits": "408fbfabdf09fecf",
+      "yBits": "4081e32f26c1354c",
+      "pathPoints": 2543,
+      "pathHash": "012076ef"
+    },
+    {
+      "name": "daily 1 reference (seed 20260101)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260101,
+        "angle": 385,
+        "power": 56,
+        "bursts": []
+      },
+      "template": 1,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 3349,
+        "time": 27.908333333333335,
+        "fuel": 0,
+        "score": 279,
+        "cause": null
+      },
+      "x": 1005.4136367928236,
+      "y": 602.0119378145499,
+      "xBits": "408f6b4f20ce8ccc",
+      "yBits": "4082d01872da589f",
+      "pathPoints": 3350,
+      "pathHash": "502ed19c"
+    },
+    {
+      "name": "daily 2 reference (seed 20260114)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260114,
+        "angle": 225,
+        "power": 63,
+        "bursts": []
+      },
+      "template": 2,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 3267,
+        "time": 27.225,
+        "fuel": 0,
+        "score": 272,
+        "cause": null
+      },
+      "x": 1033.6193475743307,
+      "y": 109.87671735947383,
+      "xBits": "4090267a3640226e",
+      "yBits": "405b781c2320b1a3",
+      "pathPoints": 3268,
+      "pathHash": "5375e4fa"
+    },
+    {
+      "name": "daily 3 reference (seed 20260104)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260104,
+        "angle": 720,
+        "power": 72,
+        "bursts": []
+      },
+      "template": 3,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 3220,
+        "time": 26.833333333333332,
+        "fuel": 0,
+        "score": 268,
+        "cause": null
+      },
+      "x": 1034.8887591460036,
+      "y": 354.2073184875268,
+      "xBits": "40902b8e16e0a86d",
+      "yBits": "407623512d30bc8a",
+      "pathPoints": 3221,
+      "pathHash": "625add8c"
+    },
+    {
+      "name": "daily 4 reference (seed 20260107)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260107,
+        "angle": 470,
+        "power": 44,
+        "bursts": []
+      },
+      "template": 4,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 4766,
+        "time": 39.71666666666667,
+        "fuel": 0,
+        "score": 397,
+        "cause": null
+      },
+      "x": 1044.273487294723,
+      "y": 334.4105973536315,
+      "xBits": "409051180d0daad4",
+      "yBits": "4074e691ce87dabe",
+      "pathPoints": 4767,
+      "pathHash": "fe5a6eae"
+    },
+    {
+      "name": "daily 5 reference (seed 20260110)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260110,
+        "angle": 500,
+        "power": 72,
+        "bursts": [
+          [
+            1800,
+            0
+          ]
+        ]
+      },
+      "template": 5,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 2973,
+        "time": 24.775,
+        "fuel": 2.4,
+        "score": 308,
+        "cause": null
+      },
+      "x": 1034.545175943186,
+      "y": 120.73254202237686,
+      "xBits": "40902a2e429a3a33",
+      "yBits": "405e2ee1f7ef437a",
+      "pathPoints": 2974,
+      "pathHash": "95fe771a"
+    },
+    {
+      "name": "daily 6 reference (seed 20260103)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260103,
+        "angle": -665,
+        "power": 72,
+        "bursts": []
+      },
+      "template": 6,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 3287,
+        "time": 27.391666666666666,
+        "fuel": 0,
+        "score": 274,
+        "cause": null
+      },
+      "x": 1028.9958323793844,
+      "y": 605.0237144998719,
+      "xBits": "409013fbbb7bb704",
+      "yBits": "4082e830913a4b20",
+      "pathPoints": 3288,
+      "pathHash": "60d50aa4"
+    },
+    {
+      "name": "stage 01 ref + pair 0/2",
+      "inputs": {
+        "v": 1,
+        "stage": "01",
+        "seed": 0,
+        "angle": 20,
+        "power": 74,
+        "bursts": [
+          [
+            60,
+            0
+          ],
+          [
+            94,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 2699,
+        "time": 22.491666666666667,
+        "fuel": 4.8,
+        "score": 345,
+        "cause": null
+      },
+      "x": 980.2997733235563,
+      "y": 173.92576119682403,
+      "xBits": "408ea265ef8e671a",
+      "yBits": "4065bd9fd5f2087b",
+      "pathPoints": 2700,
+      "pathHash": "2d94145d"
+    },
+    {
+      "name": "stage 02 ref + pair 0/2",
+      "inputs": {
+        "v": 1,
+        "stage": "02",
+        "seed": 0,
+        "angle": 620,
+        "power": 78,
+        "bursts": [
+          [
+            60,
+            0
+          ],
+          [
+            94,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 2940,
+        "time": 24.5,
+        "fuel": 4.8,
+        "score": 365,
+        "cause": null
+      },
+      "x": 1020.0721624606595,
+      "y": 133.3039578201887,
+      "xBits": "408fe093c9e98440",
+      "yBits": "4060a9ba05c0225e",
+      "pathPoints": 2941,
+      "pathHash": "f5dd21b9"
+    },
+    {
+      "name": "stage 03 ref + pair 0/2",
+      "inputs": {
+        "v": 1,
+        "stage": "03",
+        "seed": 0,
+        "angle": 180,
+        "power": 66,
+        "bursts": [
+          [
+            60,
+            0
+          ],
+          [
+            94,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 3137,
+        "time": 26.141666666666666,
+        "fuel": 4.8,
+        "score": 381,
+        "cause": null
+      },
+      "x": 1009.3569908658673,
+      "y": 127.75005106395665,
+      "xBits": "408f8adb1e06eef7",
+      "yBits": "405ff000d62d8186",
+      "pathPoints": 3138,
+      "pathHash": "49401b80"
+    },
+    {
+      "name": "stage 04 ref + pair 0/2",
+      "inputs": {
+        "v": 1,
+        "stage": "04",
+        "seed": 0,
+        "angle": 755,
+        "power": 53,
+        "bursts": [
+          [
+            60,
+            0
+          ],
+          [
+            94,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 4493,
+        "time": 37.44166666666667,
+        "fuel": 4.8,
+        "score": 494,
+        "cause": null
+      },
+      "x": 1008.8166075736507,
+      "y": 176.1986147130203,
+      "xBits": "408f8688698d33f7",
+      "yBits": "4066065b0d3e1da7",
+      "pathPoints": 4494,
+      "pathHash": "76f23ee4"
+    },
+    {
+      "name": "stage 05 ref + pair 2/0",
+      "inputs": {
+        "v": 1,
+        "stage": "05",
+        "seed": 0,
+        "angle": -635,
+        "power": 67,
+        "bursts": [
+          [
+            60,
+            2
+          ],
+          [
+            94,
+            0
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "complete",
+        "ticks": 3315,
+        "time": 27.625,
+        "fuel": 4.8,
+        "score": 396,
+        "cause": null
+      },
+      "x": 1012.0165905176191,
+      "y": 592.9848790811646,
+      "xBits": "408fa021fa3594c8",
+      "yBits": "408287e10848a0ef",
+      "pathPoints": 3316,
+      "pathHash": "74d790a2"
+    },
+    {
+      "name": "stage 06 ref + pair 0/2",
+      "inputs": {
+        "v": 1,
+        "stage": "06",
+        "seed": 0,
+        "angle": 280,
+        "power": 28,
+        "bursts": [
+          [
+            60,
+            0
+          ],
+          [
+            94,
+            2
+          ],
+          [
+            4800,
+            0
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 5618,
+        "time": 46.81666666666667,
+        "fuel": 7.2,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 770.1687431184453,
+      "y": 376.05728743024736,
+      "xBits": "4088115995fdf92e",
+      "yBits": "407780eaa6397626",
+      "pathPoints": 5619,
+      "pathHash": "49461cf1"
+    },
+    {
+      "name": "stage 01 bursts #0",
+      "inputs": {
+        "v": 1,
+        "stage": "01",
+        "seed": 0,
+        "angle": 639,
+        "power": 43,
+        "bursts": [
+          [
+            27,
+            2
+          ],
+          [
+            126,
+            0
+          ],
+          [
+            213,
+            3
+          ],
+          [
+            280,
+            3
+          ],
+          [
+            522,
+            3
+          ],
+          [
+            557,
+            2
+          ],
+          [
+            627,
+            2
+          ],
+          [
+            672,
+            3
+          ],
+          [
+            762,
+            2
+          ],
+          [
+            920,
+            0
+          ],
+          [
+            957,
+            1
+          ],
+          [
+            1052,
+            3
+          ],
+          [
+            1089,
+            3
+          ],
+          [
+            1215,
+            3
+          ],
+          [
+            1454,
+            1
+          ],
+          [
+            1586,
+            0
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1674,
+        "time": 13.95,
+        "fuel": 38.4,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": -70.17691009185238,
+      "y": 465.309360034135,
+      "xBits": "c0518b527eb4b5a7",
+      "yBits": "407d14f32381d4ca",
+      "pathPoints": 1675,
+      "pathHash": "7618ce34"
+    },
+    {
+      "name": "stage 01 bursts #1",
+      "inputs": {
+        "v": 1,
+        "stage": "01",
+        "seed": 0,
+        "angle": 301,
+        "power": 49,
+        "bursts": [
+          [
+            22,
+            2
+          ],
+          [
+            62,
+            0
+          ],
+          [
+            116,
+            2
+          ],
+          [
+            184,
+            0
+          ],
+          [
+            310,
+            1
+          ],
+          [
+            399,
+            2
+          ],
+          [
+            436,
+            1
+          ],
+          [
+            507,
+            0
+          ],
+          [
+            541,
+            2
+          ],
+          [
+            580,
+            0
+          ],
+          [
+            654,
+            3
+          ],
+          [
+            727,
+            2
+          ],
+          [
+            835,
+            2
+          ],
+          [
+            884,
+            3
+          ],
+          [
+            951,
+            0
+          ],
+          [
+            992,
+            2
+          ],
+          [
+            1057,
+            0
+          ],
+          [
+            1108,
+            1
+          ],
+          [
+            1150,
+            3
+          ],
+          [
+            1184,
+            1
+          ],
+          [
+            1232,
+            2
+          ],
+          [
+            1378,
+            3
+          ],
+          [
+            1452,
+            0
+          ],
+          [
+            1531,
+            1
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1604,
+        "time": 13.366666666666667,
+        "fuel": 57.6,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 611.1725437097978,
+      "y": 437.4399292653286,
+      "xBits": "408319615e98b5b2",
+      "yBits": "407b5709f344f23c",
+      "pathPoints": 1605,
+      "pathHash": "2e2cb508"
+    },
+    {
+      "name": "stage 01 bursts #2",
+      "inputs": {
+        "v": 1,
+        "stage": "01",
+        "seed": 0,
+        "angle": 540,
+        "power": 86,
+        "bursts": [
+          [
+            4,
+            0
+          ],
+          [
+            145,
+            0
+          ],
+          [
+            243,
+            0
+          ],
+          [
+            338,
+            0
+          ],
+          [
+            451,
+            0
+          ],
+          [
+            547,
+            3
+          ],
+          [
+            583,
+            3
+          ],
+          [
+            629,
+            3
+          ],
+          [
+            818,
+            1
+          ],
+          [
+            938,
+            1
+          ],
+          [
+            1022,
+            1
+          ],
+          [
+            1089,
+            1
+          ],
+          [
+            1150,
+            1
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1160,
+        "time": 9.666666666666666,
+        "fuel": 31.2,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 365.6827562113393,
+      "y": -70.62663183808384,
+      "xBits": "4076daec91c6ed7e",
+      "yBits": "c051a81abc6cccf5",
+      "pathPoints": 1161,
+      "pathHash": "bfa7640c"
+    },
+    {
+      "name": "stage 02 bursts #0",
+      "inputs": {
+        "v": 1,
+        "stage": "02",
+        "seed": 0,
+        "angle": 102,
+        "power": 49,
+        "bursts": [
+          [
+            0,
+            2
+          ],
+          [
+            81,
+            1
+          ],
+          [
+            152,
+            1
+          ],
+          [
+            187,
+            0
+          ],
+          [
+            227,
+            1
+          ],
+          [
+            294,
+            2
+          ],
+          [
+            403,
+            0
+          ],
+          [
+            492,
+            2
+          ],
+          [
+            532,
+            2
+          ],
+          [
+            594,
+            1
+          ],
+          [
+            726,
+            0
+          ],
+          [
+            780,
+            3
+          ],
+          [
+            823,
+            2
+          ],
+          [
+            882,
+            1
+          ],
+          [
+            1028,
+            1
+          ],
+          [
+            1170,
+            2
+          ],
+          [
+            1228,
+            1
+          ],
+          [
+            1304,
+            2
+          ],
+          [
+            1470,
+            1
+          ],
+          [
+            1562,
+            0
+          ],
+          [
+            1675,
+            3
+          ],
+          [
+            1773,
+            3
+          ],
+          [
+            1894,
+            1
+          ],
+          [
+            2005,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 2064,
+        "time": 17.2,
+        "fuel": 57.6,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 1220.4170048730573,
+      "y": 630.3831721485753,
+      "xBits": "409311ab03535037",
+      "yBits": "4083b310bc8f36f4",
+      "pathPoints": 2065,
+      "pathHash": "aab935b1"
+    },
+    {
+      "name": "stage 02 bursts #1",
+      "inputs": {
+        "v": 1,
+        "stage": "02",
+        "seed": 0,
+        "angle": 702,
+        "power": 54,
+        "bursts": [
+          [
+            29,
+            1
+          ],
+          [
+            147,
+            1
+          ],
+          [
+            219,
+            2
+          ],
+          [
+            279,
+            0
+          ],
+          [
+            334,
+            2
+          ],
+          [
+            420,
+            1
+          ],
+          [
+            493,
+            3
+          ],
+          [
+            548,
+            0
+          ],
+          [
+            608,
+            2
+          ],
+          [
+            779,
+            2
+          ],
+          [
+            830,
+            2
+          ],
+          [
+            879,
+            3
+          ],
+          [
+            933,
+            0
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 947,
+        "time": 7.891666666666667,
+        "fuel": 31.2,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 366.65020862357864,
+      "y": 433.75282806449513,
+      "xBits": "4076ea6741285d8f",
+      "yBits": "407b1c0b9570c848",
+      "pathPoints": 948,
+      "pathHash": "0a0a94ff"
+    },
+    {
+      "name": "stage 02 bursts #2",
+      "inputs": {
+        "v": 1,
+        "stage": "02",
+        "seed": 0,
+        "angle": 68,
+        "power": 33,
+        "bursts": [
+          [
+            10,
+            2
+          ],
+          [
+            69,
+            3
+          ],
+          [
+            139,
+            1
+          ],
+          [
+            220,
+            1
+          ],
+          [
+            356,
+            3
+          ],
+          [
+            484,
+            0
+          ],
+          [
+            558,
+            3
+          ],
+          [
+            690,
+            2
+          ],
+          [
+            745,
+            0
+          ],
+          [
+            780,
+            0
+          ],
+          [
+            829,
+            1
+          ],
+          [
+            938,
+            0
+          ],
+          [
+            980,
+            1
+          ],
+          [
+            1034,
+            1
+          ],
+          [
+            1134,
+            0
+          ],
+          [
+            1218,
+            3
+          ],
+          [
+            1256,
+            3
+          ],
+          [
+            1305,
+            3
+          ],
+          [
+            1368,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1385,
+        "time": 11.541666666666666,
+        "fuel": 45.6,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 392.94758378319136,
+      "y": 466.7909441367865,
+      "xBits": "40788f294d9cf06e",
+      "yBits": "407d2ca7b50a0760",
+      "pathPoints": 1386,
+      "pathHash": "2a544a23"
+    },
+    {
+      "name": "stage 03 bursts #0",
+      "inputs": {
+        "v": 1,
+        "stage": "03",
+        "seed": 0,
+        "angle": 415,
+        "power": 66,
+        "bursts": [
+          [
+            19,
+            2
+          ],
+          [
+            96,
+            0
+          ],
+          [
+            139,
+            1
+          ],
+          [
+            246,
+            1
+          ],
+          [
+            330,
+            1
+          ],
+          [
+            379,
+            3
+          ],
+          [
+            490,
+            3
+          ],
+          [
+            653,
+            3
+          ],
+          [
+            723,
+            0
+          ],
+          [
+            878,
+            1
+          ],
+          [
+            914,
+            2
+          ],
+          [
+            1052,
+            2
+          ],
+          [
+            1108,
+            2
+          ],
+          [
+            1181,
+            0
+          ],
+          [
+            1234,
+            2
+          ],
+          [
+            1333,
+            0
+          ],
+          [
+            1382,
+            2
+          ],
+          [
+            1433,
+            3
+          ],
+          [
+            1491,
+            3
+          ],
+          [
+            1531,
+            2
+          ],
+          [
+            1644,
+            3
+          ],
+          [
+            1691,
+            2
+          ],
+          [
+            1736,
+            0
+          ],
+          [
+            1888,
+            0
+          ],
+          [
+            1936,
+            2
+          ],
+          [
+            1982,
+            3
+          ],
+          [
+            2025,
+            3
+          ],
+          [
+            2096,
+            3
+          ],
+          [
+            2139,
+            1
+          ],
+          [
+            2186,
+            1
+          ],
+          [
+            2442,
+            3
+          ],
+          [
+            2489,
+            3
+          ],
+          [
+            2555,
+            0
+          ],
+          [
+            2590,
+            0
+          ],
+          [
+            2632,
+            2
+          ],
+          [
+            2671,
+            1
+          ],
+          [
+            2733,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 3635,
+        "time": 30.291666666666668,
+        "fuel": 88.8,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": -70.09210480471678,
+      "y": 95.44257439424311,
+      "xBits": "c05185e50b8d0409",
+      "yBits": "4057dc53238d548e",
+      "pathPoints": 3636,
+      "pathHash": "0e7ffa2e"
+    },
+    {
+      "name": "stage 03 bursts #1",
+      "inputs": {
+        "v": 1,
+        "stage": "03",
+        "seed": 0,
+        "angle": 313,
+        "power": 54,
+        "bursts": [
+          [
+            92,
+            3
+          ],
+          [
+            130,
+            0
+          ],
+          [
+            228,
+            2
+          ],
+          [
+            366,
+            1
+          ],
+          [
+            419,
+            3
+          ],
+          [
+            527,
+            0
+          ],
+          [
+            661,
+            3
+          ],
+          [
+            695,
+            2
+          ],
+          [
+            740,
+            3
+          ],
+          [
+            850,
+            3
+          ],
+          [
+            916,
+            3
+          ],
+          [
+            1011,
+            1
+          ],
+          [
+            1056,
+            3
+          ],
+          [
+            1119,
+            3
+          ],
+          [
+            1174,
+            2
+          ],
+          [
+            1216,
+            2
+          ],
+          [
+            1251,
+            2
+          ],
+          [
+            1299,
+            1
+          ],
+          [
+            1362,
+            1
+          ],
+          [
+            1427,
+            3
+          ],
+          [
+            1554,
+            2
+          ],
+          [
+            1654,
+            0
+          ],
+          [
+            1766,
+            2
+          ],
+          [
+            1820,
+            2
+          ],
+          [
+            1867,
+            1
+          ],
+          [
+            1963,
+            2
+          ],
+          [
+            2000,
+            0
+          ],
+          [
+            2118,
+            3
+          ],
+          [
+            2244,
+            0
+          ],
+          [
+            2305,
+            0
+          ],
+          [
+            2344,
+            0
+          ],
+          [
+            2380,
+            0
+          ],
+          [
+            2549,
+            2
+          ],
+          [
+            2593,
+            2
+          ],
+          [
+            2658,
+            0
+          ],
+          [
+            2746,
+            0
+          ],
+          [
+            2805,
+            3
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 10800,
+        "time": 90,
+        "fuel": 88.8,
+        "score": null,
+        "cause": "TIME"
+      },
+      "x": 964.77731002953,
+      "y": 484.6463553821135,
+      "xBits": "408e2637ee521d79",
+      "yBits": "407e4a5778bdbc56",
+      "pathPoints": 10801,
+      "pathHash": "d2a5791f"
+    },
+    {
+      "name": "stage 03 bursts #2",
+      "inputs": {
+        "v": 1,
+        "stage": "03",
+        "seed": 0,
+        "angle": 588,
+        "power": 35,
+        "bursts": [
+          [
+            2,
+            2
+          ],
+          [
+            111,
+            3
+          ],
+          [
+            145,
+            2
+          ],
+          [
+            227,
+            2
+          ],
+          [
+            301,
+            1
+          ],
+          [
+            356,
+            3
+          ],
+          [
+            392,
+            2
+          ],
+          [
+            460,
+            2
+          ],
+          [
+            535,
+            1
+          ],
+          [
+            576,
+            0
+          ],
+          [
+            720,
+            1
+          ],
+          [
+            835,
+            0
+          ],
+          [
+            939,
+            0
+          ],
+          [
+            998,
+            0
+          ],
+          [
+            1068,
+            1
+          ],
+          [
+            1141,
+            3
+          ],
+          [
+            1221,
+            0
+          ],
+          [
+            1308,
+            0
+          ],
+          [
+            1357,
+            0
+          ],
+          [
+            1396,
+            0
+          ],
+          [
+            1453,
+            3
+          ],
+          [
+            1518,
+            1
+          ],
+          [
+            1554,
+            3
+          ],
+          [
+            1593,
+            1
+          ],
+          [
+            1627,
+            2
+          ],
+          [
+            1674,
+            3
+          ],
+          [
+            1857,
+            1
+          ],
+          [
+            1922,
+            2
+          ],
+          [
+            2012,
+            2
+          ],
+          [
+            2057,
+            0
+          ],
+          [
+            2171,
+            2
+          ],
+          [
+            2205,
+            3
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 2228,
+        "time": 18.566666666666666,
+        "fuel": 76.8,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 400.56048783779016,
+      "y": 320.36006766231003,
+      "xBits": "407908f7c21851d5",
+      "yBits": "407405c2d64f1f80",
+      "pathPoints": 2229,
+      "pathHash": "b9dbd0cb"
+    },
+    {
+      "name": "stage 04 bursts #0",
+      "inputs": {
+        "v": 1,
+        "stage": "04",
+        "seed": 0,
+        "angle": 852,
+        "power": 32,
+        "bursts": [
+          [
+            5,
+            0
+          ],
+          [
+            135,
+            0
+          ],
+          [
+            229,
+            3
+          ],
+          [
+            309,
+            0
+          ],
+          [
+            424,
+            1
+          ],
+          [
+            472,
+            0
+          ],
+          [
+            510,
+            3
+          ],
+          [
+            555,
+            1
+          ],
+          [
+            638,
+            3
+          ],
+          [
+            734,
+            0
+          ],
+          [
+            835,
+            1
+          ],
+          [
+            903,
+            3
+          ],
+          [
+            995,
+            1
+          ],
+          [
+            1045,
+            1
+          ],
+          [
+            1115,
+            1
+          ],
+          [
+            1158,
+            2
+          ],
+          [
+            1261,
+            3
+          ],
+          [
+            1331,
+            0
+          ],
+          [
+            1635,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1661,
+        "time": 13.841666666666667,
+        "fuel": 45.6,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 200.48733977064347,
+      "y": -70.34743256881157,
+      "xBits": "40690f9849931e86",
+      "yBits": "c051963c55d0271a",
+      "pathPoints": 1662,
+      "pathHash": "90b124d0"
+    },
+    {
+      "name": "stage 04 bursts #1",
+      "inputs": {
+        "v": 1,
+        "stage": "04",
+        "seed": 0,
+        "angle": 418,
+        "power": 48,
+        "bursts": [
+          [
+            79,
+            1
+          ],
+          [
+            144,
+            1
+          ],
+          [
+            196,
+            3
+          ],
+          [
+            328,
+            0
+          ],
+          [
+            387,
+            1
+          ],
+          [
+            448,
+            2
+          ],
+          [
+            515,
+            2
+          ],
+          [
+            691,
+            0
+          ],
+          [
+            794,
+            1
+          ],
+          [
+            830,
+            3
+          ],
+          [
+            912,
+            2
+          ],
+          [
+            955,
+            1
+          ],
+          [
+            1062,
+            3
+          ],
+          [
+            1117,
+            3
+          ],
+          [
+            1300,
+            2
+          ],
+          [
+            1346,
+            0
+          ],
+          [
+            1407,
+            1
+          ],
+          [
+            1444,
+            0
+          ],
+          [
+            1534,
+            1
+          ],
+          [
+            1601,
+            3
+          ],
+          [
+            1691,
+            3
+          ],
+          [
+            1787,
+            1
+          ],
+          [
+            1823,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1860,
+        "time": 15.5,
+        "fuel": 55.2,
+        "score": null,
+        "cause": "SINGULARITY"
+      },
+      "x": 683.0543168586073,
+      "y": 370.8051374627728,
+      "xBits": "4085586f3dad5ab8",
+      "yBits": "40772ce1d7d1f64c",
+      "pathPoints": 1861,
+      "pathHash": "dd0907cf"
+    },
+    {
+      "name": "stage 04 bursts #2",
+      "inputs": {
+        "v": 1,
+        "stage": "04",
+        "seed": 0,
+        "angle": 517,
+        "power": 74,
+        "bursts": [
+          [
+            43,
+            3
+          ],
+          [
+            87,
+            3
+          ],
+          [
+            238,
+            2
+          ],
+          [
+            284,
+            1
+          ],
+          [
+            338,
+            3
+          ],
+          [
+            467,
+            0
+          ],
+          [
+            583,
+            0
+          ],
+          [
+            623,
+            1
+          ],
+          [
+            819,
+            1
+          ],
+          [
+            915,
+            0
+          ],
+          [
+            986,
+            2
+          ],
+          [
+            1085,
+            0
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1231,
+        "time": 10.258333333333333,
+        "fuel": 28.8,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 299.2357923912545,
+      "y": 248.26871297556568,
+      "xBits": "4072b3c5ce3e1157",
+      "yBits": "406f08994bf44218",
+      "pathPoints": 1232,
+      "pathHash": "2282fa88"
+    },
+    {
+      "name": "stage 05 bursts #0",
+      "inputs": {
+        "v": 1,
+        "stage": "05",
+        "seed": 0,
+        "angle": -869,
+        "power": 26,
+        "bursts": [
+          [
+            22,
+            0
+          ],
+          [
+            70,
+            0
+          ],
+          [
+            126,
+            1
+          ],
+          [
+            184,
+            2
+          ],
+          [
+            236,
+            0
+          ],
+          [
+            289,
+            0
+          ],
+          [
+            410,
+            2
+          ],
+          [
+            515,
+            2
+          ],
+          [
+            571,
+            1
+          ],
+          [
+            612,
+            0
+          ],
+          [
+            646,
+            0
+          ],
+          [
+            709,
+            0
+          ],
+          [
+            766,
+            2
+          ],
+          [
+            812,
+            0
+          ],
+          [
+            909,
+            2
+          ],
+          [
+            1046,
+            1
+          ],
+          [
+            1081,
+            2
+          ],
+          [
+            1129,
+            3
+          ],
+          [
+            1202,
+            3
+          ],
+          [
+            1386,
+            2
+          ],
+          [
+            1592,
+            3
+          ],
+          [
+            1647,
+            0
+          ],
+          [
+            1722,
+            3
+          ],
+          [
+            1767,
+            2
+          ],
+          [
+            1871,
+            1
+          ],
+          [
+            2033,
+            0
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 2244,
+        "time": 18.7,
+        "fuel": 62.4,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 447.86316684234856,
+      "y": 256.1278663190168,
+      "xBits": "407bfdcf8808ee0f",
+      "yBits": "4070020bbd8da6fe",
+      "pathPoints": 2245,
+      "pathHash": "cc9d6fff"
+    },
+    {
+      "name": "stage 05 bursts #1",
+      "inputs": {
+        "v": 1,
+        "stage": "05",
+        "seed": 0,
+        "angle": -781,
+        "power": 75,
+        "bursts": [
+          [
+            35,
+            0
+          ],
+          [
+            111,
+            1
+          ],
+          [
+            190,
+            1
+          ],
+          [
+            253,
+            2
+          ],
+          [
+            293,
+            0
+          ],
+          [
+            410,
+            3
+          ],
+          [
+            462,
+            3
+          ],
+          [
+            534,
+            3
+          ],
+          [
+            597,
+            1
+          ],
+          [
+            733,
+            1
+          ],
+          [
+            781,
+            2
+          ],
+          [
+            836,
+            1
+          ],
+          [
+            997,
+            3
+          ],
+          [
+            1069,
+            1
+          ],
+          [
+            1188,
+            2
+          ],
+          [
+            1282,
+            2
+          ],
+          [
+            1338,
+            1
+          ],
+          [
+            1379,
+            0
+          ],
+          [
+            1514,
+            2
+          ],
+          [
+            1625,
+            1
+          ],
+          [
+            1661,
+            2
+          ],
+          [
+            1847,
+            0
+          ],
+          [
+            1910,
+            2
+          ],
+          [
+            1970,
+            3
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1999,
+        "time": 16.658333333333335,
+        "fuel": 57.6,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 710.6783871665333,
+      "y": 790.3645236347796,
+      "xBits": "4086356d5640324b",
+      "yBits": "4088b2ea8b5e0ffb",
+      "pathPoints": 2000,
+      "pathHash": "267df0e2"
+    },
+    {
+      "name": "stage 05 bursts #2",
+      "inputs": {
+        "v": 1,
+        "stage": "05",
+        "seed": 0,
+        "angle": -678,
+        "power": 79,
+        "bursts": [
+          [
+            75,
+            1
+          ],
+          [
+            128,
+            0
+          ],
+          [
+            166,
+            3
+          ],
+          [
+            200,
+            3
+          ],
+          [
+            266,
+            1
+          ],
+          [
+            315,
+            3
+          ],
+          [
+            351,
+            1
+          ],
+          [
+            424,
+            1
+          ],
+          [
+            591,
+            0
+          ],
+          [
+            654,
+            0
+          ],
+          [
+            691,
+            0
+          ],
+          [
+            829,
+            1
+          ],
+          [
+            895,
+            3
+          ],
+          [
+            971,
+            1
+          ],
+          [
+            1011,
+            0
+          ],
+          [
+            1057,
+            3
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1204,
+        "time": 10.033333333333333,
+        "fuel": 38.4,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 403.54391708617436,
+      "y": 333.2252522610424,
+      "xBits": "407938b3e2670dac",
+      "yBits": "4074d39aa21d686f",
+      "pathPoints": 1205,
+      "pathHash": "529b1275"
+    },
+    {
+      "name": "stage 06 bursts #0",
+      "inputs": {
+        "v": 1,
+        "stage": "06",
+        "seed": 0,
+        "angle": 893,
+        "power": 76,
+        "bursts": [
+          [
+            1,
+            3
+          ],
+          [
+            36,
+            1
+          ],
+          [
+            112,
+            0
+          ],
+          [
+            180,
+            0
+          ],
+          [
+            291,
+            0
+          ],
+          [
+            328,
+            1
+          ],
+          [
+            424,
+            0
+          ],
+          [
+            523,
+            1
+          ],
+          [
+            560,
+            0
+          ],
+          [
+            619,
+            1
+          ],
+          [
+            675,
+            2
+          ],
+          [
+            711,
+            3
+          ],
+          [
+            764,
+            1
+          ],
+          [
+            893,
+            2
+          ],
+          [
+            1047,
+            0
+          ],
+          [
+            1118,
+            0
+          ],
+          [
+            1229,
+            1
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1271,
+        "time": 10.591666666666667,
+        "fuel": 40.8,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 318.8069820168422,
+      "y": -70.56796056944314,
+      "xBits": "4073ece965f9acc2",
+      "yBits": "c051a4597749cb41",
+      "pathPoints": 1272,
+      "pathHash": "18e7ec89"
+    },
+    {
+      "name": "stage 06 bursts #1",
+      "inputs": {
+        "v": 1,
+        "stage": "06",
+        "seed": 0,
+        "angle": 860,
+        "power": 73,
+        "bursts": [
+          [
+            61,
+            2
+          ],
+          [
+            142,
+            1
+          ],
+          [
+            200,
+            0
+          ],
+          [
+            237,
+            1
+          ],
+          [
+            297,
+            3
+          ],
+          [
+            375,
+            1
+          ],
+          [
+            433,
+            2
+          ],
+          [
+            548,
+            2
+          ],
+          [
+            633,
+            2
+          ],
+          [
+            678,
+            2
+          ],
+          [
+            718,
+            1
+          ],
+          [
+            810,
+            1
+          ],
+          [
+            881,
+            1
+          ],
+          [
+            1001,
+            3
+          ],
+          [
+            1055,
+            2
+          ],
+          [
+            1097,
+            1
+          ],
+          [
+            1172,
+            3
+          ],
+          [
+            1220,
+            0
+          ],
+          [
+            1264,
+            1
+          ],
+          [
+            1321,
+            2
+          ],
+          [
+            1394,
+            0
+          ],
+          [
+            1456,
+            1
+          ],
+          [
+            1495,
+            2
+          ],
+          [
+            1635,
+            1
+          ],
+          [
+            1673,
+            0
+          ],
+          [
+            1775,
+            3
+          ],
+          [
+            1824,
+            0
+          ],
+          [
+            1893,
+            2
+          ],
+          [
+            1935,
+            2
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 2304,
+        "time": 19.2,
+        "fuel": 69.6,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 732.2660057025222,
+      "y": 790.0223647300201,
+      "xBits": "4086e220c799070f",
+      "yBits": "4088b02dcd8f4029",
+      "pathPoints": 2305,
+      "pathHash": "49b1347c"
+    },
+    {
+      "name": "stage 06 bursts #2",
+      "inputs": {
+        "v": 1,
+        "stage": "06",
+        "seed": 0,
+        "angle": 763,
+        "power": 59,
+        "bursts": [
+          [
+            64,
+            3
+          ],
+          [
+            252,
+            3
+          ],
+          [
+            287,
+            1
+          ],
+          [
+            337,
+            3
+          ],
+          [
+            380,
+            3
+          ],
+          [
+            556,
+            2
+          ],
+          [
+            645,
+            3
+          ],
+          [
+            811,
+            0
+          ],
+          [
+            911,
+            2
+          ],
+          [
+            954,
+            3
+          ],
+          [
+            1018,
+            3
+          ],
+          [
+            1097,
+            3
+          ]
+        ]
+      },
+      "template": null,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1170,
+        "time": 9.75,
+        "fuel": 28.8,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": -70.18862249316363,
+      "y": 372.6913722378807,
+      "xBits": "c0518c126413db61",
+      "yBits": "40774b0fdc55f0f6",
+      "pathPoints": 1171,
+      "pathHash": "896bc8b5"
+    },
+    {
+      "name": "daily 0 bursts (seed 20260120)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260120,
+        "angle": 460,
+        "power": 77,
+        "bursts": [
+          [
+            29,
+            1
+          ],
+          [
+            136,
+            0
+          ],
+          [
+            205,
+            3
+          ],
+          [
+            324,
+            2
+          ],
+          [
+            456,
+            2
+          ],
+          [
+            518,
+            3
+          ],
+          [
+            555,
+            0
+          ],
+          [
+            612,
+            0
+          ],
+          [
+            686,
+            3
+          ],
+          [
+            741,
+            2
+          ],
+          [
+            805,
+            3
+          ],
+          [
+            873,
+            2
+          ],
+          [
+            972,
+            0
+          ],
+          [
+            1078,
+            0
+          ],
+          [
+            1128,
+            2
+          ],
+          [
+            1181,
+            1
+          ],
+          [
+            1397,
+            0
+          ],
+          [
+            1449,
+            3
+          ],
+          [
+            1485,
+            0
+          ],
+          [
+            1631,
+            2
+          ]
+        ]
+      },
+      "template": 0,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1679,
+        "time": 13.991666666666667,
+        "fuel": 48,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 397.34719457581036,
+      "y": -70.14958490850587,
+      "xBits": "4078d58e1be64744",
+      "yBits": "c0518992cc948081",
+      "pathPoints": 1680,
+      "pathHash": "2bfca9d7"
+    },
+    {
+      "name": "daily 1 bursts (seed 20260101)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260101,
+        "angle": 657,
+        "power": 64,
+        "bursts": [
+          [
+            20,
+            1
+          ],
+          [
+            73,
+            2
+          ],
+          [
+            172,
+            2
+          ],
+          [
+            210,
+            1
+          ],
+          [
+            258,
+            2
+          ],
+          [
+            326,
+            2
+          ],
+          [
+            362,
+            3
+          ],
+          [
+            396,
+            1
+          ],
+          [
+            473,
+            0
+          ],
+          [
+            523,
+            0
+          ],
+          [
+            605,
+            3
+          ],
+          [
+            672,
+            0
+          ],
+          [
+            919,
+            1
+          ],
+          [
+            962,
+            1
+          ],
+          [
+            1038,
+            1
+          ],
+          [
+            1153,
+            0
+          ],
+          [
+            1227,
+            3
+          ],
+          [
+            1342,
+            2
+          ],
+          [
+            1402,
+            0
+          ],
+          [
+            1455,
+            2
+          ],
+          [
+            1503,
+            1
+          ],
+          [
+            1609,
+            3
+          ],
+          [
+            1662,
+            0
+          ],
+          [
+            1709,
+            2
+          ],
+          [
+            1887,
+            2
+          ],
+          [
+            1967,
+            1
+          ],
+          [
+            2005,
+            0
+          ],
+          [
+            2055,
+            1
+          ],
+          [
+            2104,
+            3
+          ],
+          [
+            2172,
+            3
+          ],
+          [
+            2214,
+            0
+          ],
+          [
+            2351,
+            3
+          ],
+          [
+            2448,
+            0
+          ],
+          [
+            2485,
+            3
+          ],
+          [
+            2529,
+            2
+          ],
+          [
+            2568,
+            3
+          ],
+          [
+            2656,
+            3
+          ]
+        ]
+      },
+      "template": 1,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 3784,
+        "time": 31.533333333333335,
+        "fuel": 88.8,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 1220.0153778030015,
+      "y": 434.40104501732174,
+      "xBits": "4093100fbf32e3e7",
+      "yBits": "407b266aae2e19ee",
+      "pathPoints": 3785,
+      "pathHash": "b09ada7e"
+    },
+    {
+      "name": "daily 2 bursts (seed 20260114)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260114,
+        "angle": -102,
+        "power": 63,
+        "bursts": [
+          [
+            16,
+            3
+          ],
+          [
+            173,
+            3
+          ],
+          [
+            305,
+            1
+          ],
+          [
+            507,
+            2
+          ],
+          [
+            548,
+            3
+          ],
+          [
+            760,
+            2
+          ],
+          [
+            878,
+            0
+          ],
+          [
+            942,
+            3
+          ],
+          [
+            1010,
+            2
+          ],
+          [
+            1051,
+            2
+          ],
+          [
+            1087,
+            2
+          ],
+          [
+            1141,
+            0
+          ],
+          [
+            1254,
+            3
+          ],
+          [
+            1291,
+            0
+          ],
+          [
+            1333,
+            1
+          ],
+          [
+            1387,
+            2
+          ],
+          [
+            1484,
+            1
+          ],
+          [
+            1526,
+            2
+          ],
+          [
+            1577,
+            1
+          ],
+          [
+            1648,
+            2
+          ],
+          [
+            1707,
+            2
+          ],
+          [
+            1790,
+            3
+          ],
+          [
+            1843,
+            2
+          ],
+          [
+            1897,
+            3
+          ],
+          [
+            1991,
+            3
+          ],
+          [
+            2041,
+            2
+          ],
+          [
+            2114,
+            3
+          ],
+          [
+            2195,
+            3
+          ],
+          [
+            2250,
+            3
+          ],
+          [
+            2439,
+            1
+          ],
+          [
+            2500,
+            3
+          ],
+          [
+            2540,
+            3
+          ],
+          [
+            2587,
+            3
+          ],
+          [
+            2670,
+            1
+          ],
+          [
+            2717,
+            1
+          ],
+          [
+            2873,
+            0
+          ],
+          [
+            2960,
+            1
+          ]
+        ]
+      },
+      "template": 2,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 5833,
+        "time": 48.608333333333334,
+        "fuel": 88.8,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 1202.4915505149381,
+      "y": 790.0238970736365,
+      "xBits": "4092c9f75904a7f7",
+      "yBits": "4088b030f0f2ede9",
+      "pathPoints": 5834,
+      "pathHash": "0bc94c67"
+    },
+    {
+      "name": "daily 3 bursts (seed 20260104)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260104,
+        "angle": 69,
+        "power": 69,
+        "bursts": [
+          [
+            100,
+            3
+          ],
+          [
+            162,
+            2
+          ],
+          [
+            202,
+            3
+          ],
+          [
+            327,
+            3
+          ],
+          [
+            364,
+            1
+          ],
+          [
+            470,
+            2
+          ],
+          [
+            552,
+            0
+          ],
+          [
+            593,
+            1
+          ],
+          [
+            654,
+            3
+          ],
+          [
+            861,
+            2
+          ],
+          [
+            897,
+            2
+          ],
+          [
+            944,
+            1
+          ],
+          [
+            1003,
+            3
+          ],
+          [
+            1102,
+            3
+          ],
+          [
+            1142,
+            0
+          ],
+          [
+            1284,
+            3
+          ],
+          [
+            1337,
+            2
+          ],
+          [
+            1386,
+            0
+          ],
+          [
+            1575,
+            3
+          ],
+          [
+            1621,
+            3
+          ],
+          [
+            1666,
+            1
+          ]
+        ]
+      },
+      "template": 3,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1706,
+        "time": 14.216666666666667,
+        "fuel": 50.4,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 464.3078352920026,
+      "y": 507.6678871861869,
+      "xBits": "407d04ece4b2fb4b",
+      "yBits": "407fbaafaa796171",
+      "pathPoints": 1707,
+      "pathHash": "f9cf88a1"
+    },
+    {
+      "name": "daily 4 bursts (seed 20260107)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260107,
+        "angle": -14,
+        "power": 50,
+        "bursts": [
+          [
+            4,
+            3
+          ],
+          [
+            59,
+            3
+          ],
+          [
+            138,
+            2
+          ],
+          [
+            179,
+            1
+          ],
+          [
+            229,
+            3
+          ],
+          [
+            347,
+            3
+          ],
+          [
+            455,
+            3
+          ],
+          [
+            519,
+            0
+          ],
+          [
+            599,
+            3
+          ],
+          [
+            649,
+            1
+          ],
+          [
+            728,
+            3
+          ],
+          [
+            906,
+            1
+          ],
+          [
+            968,
+            1
+          ],
+          [
+            1078,
+            3
+          ],
+          [
+            1158,
+            2
+          ],
+          [
+            1196,
+            3
+          ],
+          [
+            1231,
+            2
+          ],
+          [
+            1284,
+            0
+          ],
+          [
+            1359,
+            3
+          ],
+          [
+            1427,
+            2
+          ],
+          [
+            1526,
+            0
+          ],
+          [
+            1577,
+            0
+          ],
+          [
+            1624,
+            1
+          ],
+          [
+            1685,
+            0
+          ],
+          [
+            1742,
+            0
+          ],
+          [
+            1817,
+            2
+          ],
+          [
+            1874,
+            2
+          ],
+          [
+            1944,
+            3
+          ],
+          [
+            2029,
+            1
+          ],
+          [
+            2129,
+            2
+          ],
+          [
+            2163,
+            1
+          ],
+          [
+            2212,
+            0
+          ],
+          [
+            2252,
+            3
+          ],
+          [
+            2501,
+            2
+          ],
+          [
+            2553,
+            0
+          ],
+          [
+            2613,
+            1
+          ],
+          [
+            2949,
+            0
+          ]
+        ]
+      },
+      "template": 4,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 8076,
+        "time": 67.3,
+        "fuel": 88.8,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 60.388306971512286,
+      "y": -70.05953136473057,
+      "xBits": "404e31b40af7ba1f",
+      "yBits": "c05183cf5ca426a9",
+      "pathPoints": 8077,
+      "pathHash": "0055baf5"
+    },
+    {
+      "name": "daily 5 bursts (seed 20260110)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260110,
+        "angle": 608,
+        "power": 81,
+        "bursts": [
+          [
+            103,
+            0
+          ],
+          [
+            147,
+            1
+          ],
+          [
+            254,
+            3
+          ],
+          [
+            304,
+            0
+          ],
+          [
+            354,
+            2
+          ],
+          [
+            402,
+            0
+          ],
+          [
+            458,
+            2
+          ],
+          [
+            500,
+            0
+          ],
+          [
+            560,
+            2
+          ],
+          [
+            602,
+            0
+          ],
+          [
+            647,
+            1
+          ],
+          [
+            691,
+            0
+          ],
+          [
+            787,
+            1
+          ],
+          [
+            837,
+            3
+          ],
+          [
+            915,
+            2
+          ],
+          [
+            957,
+            2
+          ],
+          [
+            1072,
+            0
+          ],
+          [
+            1186,
+            2
+          ],
+          [
+            1302,
+            1
+          ],
+          [
+            1480,
+            2
+          ],
+          [
+            1527,
+            0
+          ],
+          [
+            1667,
+            2
+          ],
+          [
+            1715,
+            0
+          ]
+        ]
+      },
+      "template": 5,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1749,
+        "time": 14.575,
+        "fuel": 55.2,
+        "score": null,
+        "cause": "DRIFT"
+      },
+      "x": 601.8513879819969,
+      "y": -70.25029695176966,
+      "xBits": "4082cecfa4809713",
+      "yBits": "c0519004dd8188e8",
+      "pathPoints": 1750,
+      "pathHash": "d06e5452"
+    },
+    {
+      "name": "daily 6 bursts (seed 20260103)",
+      "inputs": {
+        "v": 1,
+        "stage": "daily",
+        "seed": 20260103,
+        "angle": 172,
+        "power": 48,
+        "bursts": [
+          [
+            119,
+            1
+          ],
+          [
+            154,
+            1
+          ],
+          [
+            213,
+            2
+          ],
+          [
+            266,
+            2
+          ],
+          [
+            386,
+            3
+          ],
+          [
+            429,
+            2
+          ],
+          [
+            509,
+            3
+          ],
+          [
+            648,
+            0
+          ],
+          [
+            879,
+            2
+          ],
+          [
+            921,
+            3
+          ],
+          [
+            959,
+            3
+          ],
+          [
+            1022,
+            0
+          ],
+          [
+            1115,
+            0
+          ],
+          [
+            1216,
+            1
+          ],
+          [
+            1579,
+            0
+          ],
+          [
+            1749,
+            3
+          ]
+        ]
+      },
+      "template": 6,
+      "ok": true,
+      "error": null,
+      "outcome": {
+        "status": "failed",
+        "ticks": 1798,
+        "time": 14.983333333333333,
+        "fuel": 38.4,
+        "score": null,
+        "cause": "PLANET"
+      },
+      "x": 472.00427533945964,
+      "y": 376.3499457167277,
+      "xBits": "407d80118304b289",
+      "yBits": "4077859960ae0b88",
+      "pathPoints": 1799,
+      "pathHash": "2e33415f"
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VOID · Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--void:#0E0F10;--void-deep:#08090A;--void-raised:#18191B;--starlight:#E8E4D8;--starlight-dim:#B9B5AA;--telemetry:#8A8880;--flare:#82E6D0;--alarm:#D9604C;--hair:rgba(232,228,216,.10);--hair-strong:rgba(232,228,216,.24);--display:'Barlow Condensed','Arial Narrow',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+body{margin:0;background:#0E0F10}
+a{color:#E8E4D8;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid #82E6D0;outline-offset:3px}
+.v-fx{position:absolute;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.18) 3px)}
+.v-vig{position:absolute;inset:0;pointer-events:none;z-index:39;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 58%,rgba(0,0,0,.5) 100%)}
+.v-row .v-label,.v-row .v-mark{transition:color .16s cubic-bezier(.2,.7,.2,1)}
+.v-row:hover .v-label,.v-row:hover .v-mark{color:#82E6D0}
+.v-icon:hover{border-color:rgba(232,228,216,.5) !important}
+.v-glow{text-shadow:0 0 18px rgba(232,228,216,.18)}
+@keyframes v-boot{0%{opacity:0}10%{opacity:.8;transform:translateX(2px)}14%{opacity:.15}24%{opacity:1;transform:none}100%{opacity:1}}
+@keyframes v-spin{to{transform:rotate(360deg)}}
+@keyframes v-flow{to{stroke-dashoffset:-90}}
+@keyframes v-pulse{0%{opacity:.6;transform:scale(.6)}100%{opacity:0;transform:scale(1.7)}}
+@keyframes v-blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.v-boot{animation:v-boot .6s steps(8) both}
+.v-spin{animation:v-spin 60s linear infinite}
+.v-flow{animation:v-flow 3.2s linear infinite}
+.v-pulse{transform-box:fill-box;transform-origin:center;animation:v-pulse 2.8s cubic-bezier(.2,.7,.2,1) infinite}
+.v-blink{animation:v-blink 1.1s steps(1) infinite}
+.v-still .v-boot,.v-still .v-spin,.v-still .v-flow,.v-still .v-pulse,.v-still .v-blink{animation:none !important}
+@media (prefers-reduced-motion: reduce){.v-boot,.v-spin,.v-flow,.v-pulse,.v-blink{animation:none !important}}
+</style>
+</helmet>
+<div class="{{rootClass}}" style="min-height: 100vh; box-sizing: border-box; background: #0E0F10; color: #E8E4D8; font-family: var(--mono); display: flex; flex-direction: column; padding: 0 clamp(16px, 4vw, 56px); position: relative; overflow: hidden">
+  <div class="v-vig"></div>
+  <div class="v-fx"></div>
+
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; border-bottom: 1px solid var(--hair); position: relative; z-index: 2">
+    <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry); font-variant-numeric: tabular-nums">{{clock}} UTC</span>
+    <button class="v-icon" type="button" aria-label="Settings" aria-expanded="{{settingsOpen}}" onClick="{{toggleSettings}}" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--hair-strong); color: #E8E4D8; cursor: pointer">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M2 5h8M14 5h2M2 13h2M8 13h8"></path><rect x="10" y="3" width="4" height="4"></rect><rect x="4" y="11" width="4" height="4"></rect></svg>
+    </button>
+  </header>
+
+  <sc-if value="{{settingsOpen}}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="Settings" style="position: absolute; right: clamp(16px, 4vw, 56px); top: 72px; z-index: 30; width: 300px; max-width: calc(100% - 32px); background: #0E0F10; border: 1px solid var(--hair-strong)">
+      <div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 16px; border-bottom: 1px solid var(--hair)">
+        <span style="font-size: 14px">Sound</span>
+        <button type="button" onClick="{{toggleSound}}" aria-pressed="{{soundOn}}" style="min-width: 72px; height: 36px; display: flex; align-items: center; gap: 8px; padding: 0 10px; background: transparent; border: 1px solid var(--hair-strong); color: {{soundFg}}; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; cursor: pointer"><span style="width: 8px; height: 8px; background: {{soundDot}}; border: 1px solid currentColor"></span>{{soundLabel}}</button>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 16px">
+        <span style="font-size: 14px">Reduced motion</span>
+        <button type="button" onClick="{{toggleMotion}}" aria-pressed="{{reduced}}" style="min-width: 72px; height: 36px; display: flex; align-items: center; gap: 8px; padding: 0 10px; background: transparent; border: 1px solid var(--hair-strong); color: {{motionFg}}; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; cursor: pointer"><span style="width: 8px; height: 8px; background: {{motionDot}}; border: 1px solid currentColor"></span>{{motionLabel}}</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <main class="v-boot" style="flex: 1 1 auto; display: flex; flex-wrap: wrap; align-items: center; gap: clamp(24px, 4vw, 72px); padding: clamp(28px, 5vh, 56px) 0; position: relative; z-index: 1">
+    <section style="flex: 1 1 420px; max-width: 560px; display: flex; flex-direction: column; gap: clamp(28px, 5vh, 56px)">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">
+          <span style="width: 8px; height: 8px; background: #82E6D0"></span><span>NAV-01</span><span class="v-blink" style="color: #82E6D0">_</span>
+        </div>
+        <h1 class="v-glow" style="margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(120px, 15vw, 232px); line-height: 0.8; letter-spacing: 0.06em; text-transform: uppercase">{{name}}</h1>
+        <div aria-hidden="true" style="display: flex; align-items: center; gap: 8px; width: 100%; max-width: 420px">
+          <span style="height: 1px; flex: 1 1 auto; background: var(--hair-strong)"></span>
+          <span style="width: 24px; height: 1px; background: #82E6D0"></span>
+        </div>
+      </div>
+
+      <nav aria-label="Main" style="display: flex; flex-direction: column; max-width: 420px; border-top: 1px solid var(--hair)">
+        <a class="v-row" href="Missions.dc.html" style="min-height: 64px; display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; border-bottom: 1px solid var(--hair)">
+          <span class="v-mark" style="font-size: 12px; color: #82E6D0">▸</span>
+          <span class="v-label" style="font-family: var(--display); font-weight: 500; font-size: 34px; letter-spacing: 0.06em; text-transform: uppercase; color: #82E6D0">Stages</span>
+          <span style="font-size: 12px; color: var(--telemetry)">6</span>
+        </a>
+        <a class="v-row" href="Play.dc.html" style="min-height: 64px; display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; border-bottom: 1px solid var(--hair)">
+          <span class="v-mark" style="font-size: 12px; color: var(--telemetry)">▸</span>
+          <span class="v-label" style="font-family: var(--display); font-weight: 500; font-size: 34px; letter-spacing: 0.06em; text-transform: uppercase">Daily</span>
+          <span style="font-size: 12px; color: var(--telemetry); font-variant-numeric: tabular-nums">{{countdown}}</span>
+        </a>
+        <a class="v-row" href="Leaderboard.dc.html" style="min-height: 64px; display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; border-bottom: 1px solid var(--hair)">
+          <span class="v-mark" style="font-size: 12px; color: var(--telemetry)">▸</span>
+          <span class="v-label" style="font-family: var(--display); font-weight: 500; font-size: 34px; letter-spacing: 0.06em; text-transform: uppercase">Stats</span>
+          <span></span>
+        </a>
+        <a class="v-row" href="HowTo.dc.html" style="min-height: 64px; display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; border-bottom: 1px solid var(--hair)">
+          <span class="v-mark" style="font-size: 12px; color: var(--telemetry)">▸</span>
+          <span class="v-label" style="font-family: var(--display); font-weight: 500; font-size: 34px; letter-spacing: 0.06em; text-transform: uppercase">How to Play</span>
+          <span></span>
+        </a>
+      </nav>
+    </section>
+
+    <section aria-hidden="true" style="flex: 1 1 440px; max-width: 720px; margin-left: auto; position: relative; aspect-ratio: 1 / 1; width: 100%">
+      <svg viewBox="0 0 800 800" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible">
+        <circle cx="400" cy="400" r="372" fill="none" stroke="rgba(232,228,216,.12)" stroke-width="1"></circle>
+        <path d="{{dialTicks}}" stroke="rgba(232,228,216,.3)" stroke-width="1" fill="none"></path>
+        <g font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1.5" fill="#8A8880">
+          <text x="390" y="12">000</text><text x="782" y="404">090</text><text x="390" y="800">180</text><text x="-14" y="404">270</text>
+        </g>
+        <circle cx="400" cy="400" r="300" fill="none" stroke="rgba(232,228,216,.14)" stroke-width="1"></circle>
+        <circle cx="400" cy="400" r="196" fill="none" stroke="rgba(232,228,216,.14)" stroke-width="1"></circle>
+        <circle cx="400" cy="400" r="148" fill="none" stroke="rgba(138,136,128,.35)" stroke-width="1" stroke-dasharray="1 5"></circle>
+        <circle cx="400" cy="400" r="112" fill="none" stroke="rgba(138,136,128,.45)" stroke-width="1" stroke-dasharray="1 4"></circle>
+        <circle cx="400" cy="400" r="84" fill="none" stroke="rgba(138,136,128,.6)" stroke-width="1" stroke-dasharray="1 3"></circle>
+        <circle cx="400" cy="400" r="58" fill="#E8E4D8"></circle>
+        <circle cx="422" cy="390" r="54" fill="#0E0F10" opacity="0.9"></circle>
+        <circle cx="400" cy="400" r="58" fill="none" stroke="#E8E4D8" stroke-width="1"></circle>
+        <path d="M400 360 V440 M360 400 H440" stroke="rgba(232,228,216,.25)" stroke-width="1"></path>
+        <path d="{{hazardTeeth}}" stroke="#D9604C" stroke-width="1.2"></path>
+        <circle cx="168" cy="248" r="14" fill="#000000" stroke="#E8E4D8" stroke-width="1"></circle>
+        <path d="M40 700 C 170 610, 290 548, 350 488 C 400 440, 482 452, 496 392 C 510 330, 444 290, 486 222 C 530 152, 620 124, 700 112" fill="none" stroke="rgba(130,230,208,.22)" stroke-width="1"></path>
+        <path class="v-flow" d="M40 700 C 170 610, 290 548, 350 488 C 400 440, 482 452, 496 392 C 510 330, 444 290, 486 222 C 530 152, 620 124, 700 112" fill="none" stroke="#82E6D0" stroke-width="1.6" stroke-dasharray="6 9"></path>
+        <circle cx="700" cy="112" r="5" fill="#82E6D0"></circle>
+        <circle class="v-pulse" cx="700" cy="112" r="22" fill="none" stroke="#82E6D0" stroke-width="1"></circle>
+        <path d="M676 112 H 690 M710 112 H 724 M700 88 V 102 M700 122 V 136" stroke="#82E6D0" stroke-width="1"></path>
+      </svg>
+      <div style="position: absolute; left: 50%; top: 50%; width: 49%; aspect-ratio: 1 / 1; transform: translate(-50%, -50%)">
+        <div class="v-spin" style="position: absolute; inset: 0; animation-duration: 34s">
+          <div style="position: absolute; left: 50%; top: 0; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #E8E4D8"></div>
+        </div>
+      </div>
+      <div style="position: absolute; left: 50%; top: 50%; width: 75%; aspect-ratio: 1 / 1; transform: translate(-50%, -50%)">
+        <div class="v-spin" style="position: absolute; inset: 0; animation-duration: 96s; animation-direction: reverse">
+          <div style="position: absolute; left: 50%; top: 0; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; background: #18191B; border: 1px solid #E8E4D8; box-sizing: border-box"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"productName":{"editor":"text","default":"VOID","section":"Brand"},"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { settings: false, sound: true, reduced: false };
+  }
+  componentDidMount() { this._t = setInterval(() => this.forceUpdate(), 1000); }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    var s = this.state, self = this;
+    var name = (this.props.productName ?? 'VOID').trim() || 'VOID';
+    var ticks = '';
+    for (var i = 0; i < 72; i++) {
+      var a = (i * 5) * Math.PI / 180, r2 = (i % 6 === 0) ? 354 : 364;
+      ticks += 'M' + (400 + 372 * Math.cos(a)).toFixed(1) + ' ' + (400 + 372 * Math.sin(a)).toFixed(1) + ' L' + (400 + r2 * Math.cos(a)).toFixed(1) + ' ' + (400 + r2 * Math.sin(a)).toFixed(1) + ' ';
+    }
+    var teeth = '';
+    for (var j = 0; j < 28; j++) {
+      var b = (j * 360 / 28) * Math.PI / 180;
+      teeth += 'M' + (168 + 20 * Math.cos(b)).toFixed(1) + ' ' + (248 + 20 * Math.sin(b)).toFixed(1) + ' L' + (168 + 30 * Math.cos(b)).toFixed(1) + ' ' + (248 + 30 * Math.sin(b)).toFixed(1) + ' ';
+    }
+    var now = new Date();
+    var y = now.getUTCFullYear(), m = now.getUTCMonth(), d = now.getUTCDate();
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var left = Math.max(0, Date.UTC(y, m, d + 1) - now.getTime());
+    return {
+      name: name,
+      rootClass: s.reduced ? 'v-still' : 'v-live',
+      dialTicks: ticks, hazardTeeth: teeth,
+      clock: pad(d) + '.' + pad(m + 1) + '.' + String(y).slice(2) + ' · ' + pad(now.getUTCHours()) + ':' + pad(now.getUTCMinutes()) + ':' + pad(now.getUTCSeconds()),
+      countdown: pad(Math.floor(left / 3600000)) + ':' + pad(Math.floor(left / 60000) % 60) + ':' + pad(Math.floor(left / 1000) % 60),
+      settingsOpen: s.settings,
+      toggleSettings: function () { self.setState({ settings: !s.settings }); },
+      soundOn: s.sound, soundLabel: s.sound ? 'ON' : 'OFF', soundDot: s.sound ? '#82E6D0' : 'transparent', soundFg: s.sound ? '#82E6D0' : '#8A8880',
+      toggleSound: function () { self.setState({ sound: !s.sound }); },
+      reduced: s.reduced, motionLabel: s.reduced ? 'ON' : 'OFF', motionDot: s.reduced ? '#82E6D0' : 'transparent', motionFg: s.reduced ? '#82E6D0' : '#8A8880',
+      toggleMotion: function () { self.setState({ reduced: !s.reduced }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

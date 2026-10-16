@@ -1,0 +1,47 @@
+/* VOID design tokens v0.2 — source of truth: tokens.json */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --void: #0E0F10;
+  --void-deep: #08090A;
+  --void-raised: #18191B;
+  --starlight: #E8E4D8;
+  --starlight-dim: #B9B5AA;
+  --telemetry: #8A8880;
+  --flare: #82E6D0;          /* accent (mint) */
+  --flare-hover: #A6EEDD;
+  --flare-pressed: #66C9B3;
+  --alarm: #D9604C;          /* danger only */
+  --hair: rgba(232,228,216,.10);
+  --hair-strong: rgba(232,228,216,.24);
+
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --gutter: clamp(16px, 4vw, 56px);
+  --ease-settle: cubic-bezier(.2,.7,.2,1);
+}
+
+body { margin: 0; background: var(--void); color: var(--starlight); font-family: var(--font-mono); }
+:focus-visible { outline: 2px solid var(--flare); outline-offset: 3px; }
+
+/* CRT overlays — place as the last children of a position:relative screen */
+.crt-scan { position: absolute; inset: 0; pointer-events: none; z-index: 40;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(0,0,0,.18) 3px); }
+.crt-scan--game { background: repeating-linear-gradient(to bottom, transparent 0, transparent 2px, rgba(0,0,0,.12) 3px); }
+.crt-vignette { position: absolute; inset: 0; pointer-events: none; z-index: 39;
+  background: radial-gradient(ellipse at 50% 50%, transparent 58%, rgba(0,0,0,.5) 100%); }
+.glow-flare { text-shadow: 0 0 22px rgba(130,230,208,.32); }
+
+@keyframes signal-in {
+  0% { opacity: 0; transform: translateX(3px); }
+  18% { opacity: .8; }
+  26% { opacity: .15; transform: translateX(-1px); }
+  44% { opacity: 1; transform: none; }
+  100% { opacity: 1; }
+}
+.signal-in { animation: signal-in .55s steps(7) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-in { animation: none; }
+}

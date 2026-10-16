@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VOID · Result</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--void:#0E0F10;--void-deep:#08090A;--starlight:#E8E4D8;--starlight-dim:#B9B5AA;--telemetry:#8A8880;--flare:#82E6D0;--alarm:#D9604C;--hair:rgba(232,228,216,.10);--hair-strong:rgba(232,228,216,.24);--display:'Barlow Condensed','Arial Narrow',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+body{margin:0;background:#0E0F10}
+a{color:#E8E4D8;text-decoration:none}a:hover{color:#FFFFFF}
+a:focus-visible,button:focus-visible{outline:2px solid #82E6D0;outline-offset:3px}
+.v-fx{position:absolute;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.18) 3px)}
+.v-vig{position:absolute;inset:0;pointer-events:none;z-index:39;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 58%,rgba(0,0,0,.5) 100%)}
+.v-primary:hover{background:#A6EEDD !important}
+.v-ghost:hover{background:rgba(232,228,216,.05)}
+@keyframes v-lost{0%{opacity:0}12%{opacity:.9;transform:translateX(4px)}18%{opacity:.1}26%{opacity:.8;transform:translateX(-2px)}34%{opacity:.3}50%{opacity:1;transform:none}100%{opacity:1}}
+.v-lost{animation:v-lost .7s steps(9) .1s both}
+@media (prefers-reduced-motion: reduce){.v-lost{animation:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; box-sizing: border-box; background: #0E0F10; color: #E8E4D8; font-family: var(--mono); display: flex; flex-direction: column; padding: 0 clamp(16px, 4vw, 56px) 32px; position: relative; overflow: hidden">
+  <div class="v-vig"></div>
+  <div class="v-fx"></div>
+
+  <main style="flex: 1 1 auto; display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 96px); align-items: center; padding-top: 48px; position: relative; z-index: 1">
+    <section class="v-lost" style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 40px">
+      <div role="status" style="display: flex; flex-direction: column; gap: 10px">
+        <span style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.18em; color: #D9604C"><svg width="9" height="9" viewBox="0 0 9 9" aria-hidden="true"><path d="M1 1l7 7M8 1L1 8" stroke="#D9604C" stroke-width="1.6"></path></svg>FAILED · SINGULARITY</span>
+        <h1 style="margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(56px, 6vw, 88px); letter-spacing: 0.08em; text-transform: uppercase; line-height: 0.9">Slingshot</h1>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 12px; letter-spacing: 0.18em; color: var(--telemetry)">SCORE</span>
+        <span style="font-family: var(--display); font-weight: 500; font-size: clamp(120px, 13vw, 184px); line-height: 0.8; color: #5A5954">—</span>
+      </div>
+
+      <dl style="margin: 0; display: flex; gap: 48px; flex-wrap: wrap; font-variant-numeric: tabular-nums; border-top: 1px solid var(--hair); padding-top: 18px; max-width: 480px">
+        <div style="display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 12px; letter-spacing: 0.16em; color: var(--telemetry)">TIME</dt><dd style="margin: 0; font-size: 24px; font-weight: 500">21.70 s</dd></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><dt style="font-size: 12px; letter-spacing: 0.16em; color: var(--telemetry)">FUEL</dt><dd style="margin: 0; font-size: 24px; font-weight: 500">14.4 u</dd></div>
+      </dl>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 10px">
+        <a class="v-primary" href="Play.dc.html" style="height: 56px; display: flex; align-items: center; gap: 12px; padding: 0 26px; background: #82E6D0; color: #0E0F10; font-size: 13px; font-weight: 600; letter-spacing: 0.18em">RETRY<span style="font-weight: 500; font-size: 12px; border: 1px solid rgba(14,15,16,.45); padding: 1px 6px; letter-spacing: 0.04em">R</span></a>
+        <a class="v-ghost" href="Missions.dc.html" style="height: 56px; display: flex; align-items: center; padding: 0 24px; border: 1px solid var(--hair-strong); font-size: 13px; letter-spacing: 0.18em">STAGES</a>
+      </div>
+    </section>
+
+    <section aria-hidden="true" style="flex: 1 1 520px; min-width: 0">
+      <div style="position: relative; border: 1px solid var(--hair); background: #08090A; aspect-ratio: 1150 / 720">
+        <svg viewBox="0 0 1150 720" style="position: absolute; inset: 0; width: 100%; height: 100%">
+          <circle cx="430" cy="410" r="128" fill="none" stroke="rgba(138,136,128,.35)" stroke-width="1" stroke-dasharray="1 4"></circle>
+          <circle cx="430" cy="410" r="62" fill="none" stroke="rgba(232,228,216,.6)" stroke-width="1"></circle>
+          <circle cx="800" cy="250" r="18" fill="none" stroke="rgba(232,228,216,.6)" stroke-width="1"></circle>
+          <path d="M604 158 L676 94" stroke="rgba(232,228,216,.5)" stroke-width="1" stroke-dasharray="3 4"></path>
+          <circle cx="1040" cy="150" r="18" fill="none" stroke="rgba(130,230,208,.35)" stroke-width="1"></circle>
+          <path d="M110 610 C 250 570, 330 530, 420 500 C 540 466, 640 420, 720 468 C 790 510, 830 534, 858 548" fill="none" stroke="#82E6D0" stroke-width="2" opacity="0.6"></path>
+          <path d="{{teeth}}" stroke="#D9604C" stroke-width="1.6"></path>
+          <circle cx="900" cy="560" r="20" fill="#000" stroke="#E8E4D8" stroke-width="1"></circle>
+          <path d="M848 538 l20 20 M868 538 l-20 20" stroke="#D9604C" stroke-width="2"></path>
+          <path d="M10 10h16M10 10v16M1140 10h-16M1140 10v16M10 710h16M10 710v-16M1140 710h-16M1140 710v-16" stroke="rgba(232,228,216,.4)" stroke-width="1"></path>
+        </svg>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var t = '';
+    for (var j = 0; j < 36; j++) {
+      var b = (j * 10) * Math.PI / 180;
+      t += 'M' + (900 + 44 * Math.cos(b)).toFixed(1) + ' ' + (560 + 44 * Math.sin(b)).toFixed(1) + 'L' + (900 + 56 * Math.cos(b)).toFixed(1) + ' ' + (560 + 56 * Math.sin(b)).toFixed(1) + ' ';
+    }
+    return { teeth: t };
+  }
+}
+</script>
+</body>
+</html>

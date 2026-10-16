@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VOID · How to Play</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--void:#0E0F10;--void-deep:#08090A;--starlight:#E8E4D8;--starlight-dim:#B9B5AA;--telemetry:#8A8880;--flare:#82E6D0;--alarm:#D9604C;--hair:rgba(232,228,216,.10);--hair-strong:rgba(232,228,216,.24);--display:'Barlow Condensed','Arial Narrow',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+body{margin:0;background:#0E0F10}
+a{color:#E8E4D8;text-decoration:none}a:hover{color:#82E6D0}
+a:focus-visible,button:focus-visible{outline:2px solid #82E6D0;outline-offset:3px}
+.v-fx{position:absolute;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.14) 3px)}
+</style>
+</helmet>
+<div style="min-height: 100vh; box-sizing: border-box; background: #0E0F10; color: #E8E4D8; font-family: var(--mono); padding: 0 clamp(16px, 4vw, 56px) 80px; position: relative; overflow: hidden">
+  <div class="v-fx"></div>
+
+  <header style="display: flex; align-items: center; height: 64px; border-bottom: 1px solid var(--hair)">
+    <a href="Main.dc.html" aria-label="Back to home" style="display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; letter-spacing: 0.14em">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M14 8H2M7 3L2 8l5 5"></path></svg>
+      <span>{{name}}</span>
+    </a>
+  </header>
+
+  <main style="max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; padding-top: 36px; position: relative; z-index: 1">
+    <h1 style="margin: 0 0 24px; font-family: var(--display); font-weight: 600; font-size: clamp(44px, 5vw, 64px); line-height: 0.9; letter-spacing: 0.06em; text-transform: uppercase">How to Play</h1>
+
+    <nav aria-label="Sections" style="display: flex; flex-wrap: wrap; gap: 4px 20px; padding: 12px 0; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); font-size: 12px; letter-spacing: 0.12em; color: var(--telemetry)">
+      <a href="#aim" style="min-height: 32px; display: flex; align-items: center">01 AIM</a>
+      <a href="#gravity" style="min-height: 32px; display: flex; align-items: center">02 GRAVITY</a>
+      <a href="#thrust" style="min-height: 32px; display: flex; align-items: center">03 THRUST</a>
+      <a href="#beacon" style="min-height: 32px; display: flex; align-items: center">04 BEACON</a>
+      <a href="#hazards" style="min-height: 32px; display: flex; align-items: center">05 HAZARDS</a>
+      <a href="#score" style="min-height: 32px; display: flex; align-items: center">06 SCORE</a>
+      <a href="#controls" style="min-height: 32px; display: flex; align-items: center">07 CONTROLS</a>
+      <a href="#daily" style="min-height: 32px; display: flex; align-items: center">08 DAILY</a>
+      <a href="#terms" style="min-height: 32px; display: flex; align-items: center">09 TERMS</a>
+    </nav>
+
+    <section id="aim" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 24px 48px; align-items: center; padding: 36px 0; border-bottom: 1px solid var(--hair)">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">01</span>Aim and launch</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #B9B5AA; max-width: 52ch">Set angle and power from the pad. The dashed line previews the first seconds of flight. Launching is free; the clock starts when the probe leaves the pad.</p>
+      </div>
+      <svg viewBox="0 0 360 150" role="img" aria-label="Aim arrow from the pad with a dashed preview path" style="width: 100%; height: auto; background: #08090A; border: 1px solid var(--hair)"><path d="M40 120 L130 80" stroke="#E8E4D8" stroke-width="1.2"></path><path d="M120 78 L130 80 L124 89" stroke="#E8E4D8" stroke-width="1.2" fill="none"></path><path d="M80 120 A40 40 0 0 0 77 105" stroke="rgba(232,228,216,.45)" fill="none"></path><rect x="35" y="115" width="10" height="10" fill="#E8E4D8" transform="rotate(45 40 120)"></rect><path d="M130 80 C 170 62, 220 50, 300 46" stroke="#82E6D0" stroke-dasharray="5 6" fill="none"></path><text x="138" y="108" fill="#8A8880" font-family="IBM Plex Mono, monospace" font-size="12">24° · 64%</text></svg>
+    </section>
+
+    <section id="gravity" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 24px 48px; align-items: center; padding: 36px 0; border-bottom: 1px solid var(--hair)">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">02</span>Gravity</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #B9B5AA; max-width: 52ch">Every planet pulls the probe toward it, and the pull grows sharply as you get closer. Dotted rings mark equal pull; tighter rings mean stronger pull. Passing close to a planet bends and speeds up your path: a gravity assist.</p>
+      </div>
+      <svg viewBox="0 0 360 150" role="img" aria-label="Path bending around a planet with dotted gravity rings" style="width: 100%; height: auto; background: #08090A; border: 1px solid var(--hair)"><circle cx="180" cy="90" r="62" fill="none" stroke="rgba(138,136,128,.35)" stroke-dasharray="1 5"></circle><circle cx="180" cy="90" r="42" fill="none" stroke="rgba(138,136,128,.55)" stroke-dasharray="1 3"></circle><circle cx="180" cy="90" r="22" fill="#E8E4D8"></circle><path d="M20 140 C 100 120, 150 140, 200 130 C 250 120, 240 60, 340 20" stroke="#82E6D0" stroke-width="1.6" fill="none"></path><path d="M20 140 L 340 110" stroke="rgba(232,228,216,.25)" stroke-dasharray="3 5"></path></svg>
+    </section>
+
+    <section id="thrust" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 24px 48px; align-items: center; padding: 36px 0; border-bottom: 1px solid var(--hair)">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">03</span>Thrusters and fuel</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #B9B5AA; max-width: 52ch">In flight, each press fires one burst in that direction: 0.28 s, 2.4 u of fuel. Hold to repeat. Each stage starts with its own tank. At 0 u the probe can only coast. Fuel below 20 u turns the gauge red.</p>
+      </div>
+      <svg viewBox="0 0 360 150" role="img" aria-label="Probe firing a thruster burst, with a fuel gauge" style="width: 100%; height: auto; background: #08090A; border: 1px solid var(--hair)"><path d="M30 120 C 90 100, 130 90, 160 80" stroke="#82E6D0" stroke-width="1.6" fill="none"></path><path d="M160 80 C 200 60, 240 40, 320 36" stroke="#82E6D0" stroke-dasharray="5 6" fill="none"></path><rect x="155" y="75" width="10" height="10" fill="#E8E4D8" transform="rotate(45 160 80)"></rect><path d="M160 94 V114 M154 92 L150 108 M166 92 L170 108" stroke="#E8E4D8" stroke-width="1.3"></path><g fill="#E8E4D8"><rect x="230" y="120" width="8" height="8"></rect><rect x="240" y="120" width="8" height="8"></rect><rect x="250" y="120" width="8" height="8"></rect><rect x="260" y="120" width="8" height="8"></rect><rect x="270" y="120" width="8" height="8"></rect><rect x="280" y="120" width="8" height="8"></rect></g><g fill="rgba(232,228,216,.12)"><rect x="290" y="120" width="8" height="8"></rect><rect x="300" y="120" width="8" height="8"></rect><rect x="310" y="120" width="8" height="8"></rect><rect x="320" y="120" width="8" height="8"></rect></g></svg>
+    </section>
+
+    <section id="beacon" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 24px 48px; align-items: center; padding: 36px 0; border-bottom: 1px solid var(--hair)">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">04</span>Gates and beacon</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #B9B5AA; max-width: 52ch">Gates open and close on a fixed cycle; the bar above a gate shows how long it stays open. Pass through every gate, then touch the mint beacon to complete the stage.</p>
+      </div>
+      <svg viewBox="0 0 360 150" role="img" aria-label="Path through an open gate to the beacon" style="width: 100%; height: auto; background: #08090A; border: 1px solid var(--hair)"><path d="M120 120 L170 70" stroke="#E8E4D8" stroke-dasharray="3 4"></path><path d="M114 113 L126 127 M164 63 L176 77" stroke="#E8E4D8" stroke-width="2.5"></path><rect x="110" y="44" width="56" height="3" fill="rgba(232,228,216,.16)"></rect><rect x="110" y="44" width="34" height="3" fill="#E8E4D8"></rect><path d="M30 130 C 90 120, 130 100, 145 95 C 200 70, 260 60, 300 56" stroke="#82E6D0" stroke-width="1.6" fill="none"></path><circle cx="306" cy="55" r="5" fill="#82E6D0"></circle><circle cx="306" cy="55" r="15" fill="none" stroke="#82E6D0"></circle></svg>
+    </section>
+
+    <section id="hazards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 24px 48px; align-items: center; padding: 36px 0; border-bottom: 1px solid var(--hair)">
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">05</span>Singularities</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #B9B5AA; max-width: 52ch">A singularity pulls far harder than any planet. Its toothed red ring is the event horizon: cross it and the run fails. The dashed outer ring marks where its pull begins.</p>
+      </div>
+      <svg viewBox="0 0 360 150" role="img" aria-label="Singularity with toothed event horizon and dashed outer ring" style="width: 100%; height: auto; background: #08090A; border: 1px solid var(--hair)"><circle cx="180" cy="75" r="62" fill="none" stroke="#D9604C" stroke-dasharray="2 6" opacity="0.6"></circle><path d="{{teeth}}" stroke="#D9604C" stroke-width="1.4"></path><circle cx="180" cy="75" r="14" fill="#000" stroke="#E8E4D8"></circle><path d="M20 30 C 90 40, 120 50, 140 62" stroke="#82E6D0" stroke-width="1.6" fill="none"></path><path d="M138 54 l12 12 M150 54 l-12 12" stroke="#D9604C" stroke-width="1.8"></path></svg>
+    </section>
+
+    <section id="score" style="display: flex; flex-direction: column; gap: 18px; padding: 36px 0; border-bottom: 1px solid var(--hair)">
+      <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">06</span>Debt Score</h2>
+      <p style="margin: 0; font-family: var(--display); font-weight: 500; font-size: clamp(28px, 3.4vw, 44px); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.1">Score = Seconds × 10 + Fuel × 25</p>
+      <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #B9B5AA; max-width: 64ch">Lower is better. Every second and every unit of fuel adds to what the run owes. Failed runs don't score. Each stage has a par to beat.</p>
+      <p style="margin: 0; font-size: 13px; color: var(--telemetry); font-variant-numeric: tabular-nums">e.g. 38.42 s × 10 + 21.6 u × 25 = <span style="color: #82E6D0">924</span></p>
+    </section>
+
+    <section id="controls" style="display: flex; flex-direction: column; gap: 18px; padding: 36px 0; border-bottom: 1px solid var(--hair)">
+      <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">07</span>Controls</h2>
+      <div style="overflow-x: auto">
+        <table style="width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14px">
+          <thead><tr style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry); text-align: left"><th scope="col" style="font-weight: 400; padding: 0 0 10px">ACTION</th><th scope="col" style="font-weight: 400; padding: 0 0 10px">KEYBOARD</th><th scope="col" style="font-weight: 400; padding: 0 0 10px">MOUSE</th><th scope="col" style="font-weight: 400; padding: 0 0 10px">TOUCH</th></tr></thead>
+          <tbody>
+            <sc-for list="{{controls}}" as="c" hint-placeholder-count="6">
+              <tr style="border-top: 1px solid var(--hair)"><th scope="row" style="text-align: left; font-weight: 500; padding: 12px 16px 12px 0">{{c.a}}</th><td style="padding: 12px 16px 12px 0; color: #B9B5AA">{{c.k}}</td><td style="padding: 12px 16px 12px 0; color: #B9B5AA">{{c.m}}</td><td style="padding: 12px 0; color: #B9B5AA">{{c.t}}</td></tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="daily" style="display: flex; flex-direction: column; gap: 12px; padding: 36px 0; border-bottom: 1px solid var(--hair)">
+      <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">08</span>Daily and ranked runs</h2>
+      <ul style="margin: 0; padding: 0 0 0 18px; display: grid; gap: 8px; font-size: 15px; line-height: 1.65; color: #B9B5AA; max-width: 70ch">
+        <li>One daily stage, identical for everyone, from 00:00 to 24:00 UTC.</li>
+        <li>Fly it as often as you like; your best run of the day is ranked.</li>
+        <li>Only completed runs are ranked. Each is verified by replaying your inputs.</li>
+        <li>Runs are saved on your device and submit when you're online.</li>
+      </ul>
+    </section>
+
+    <section id="terms" style="display: flex; flex-direction: column; gap: 18px; padding: 36px 0">
+      <h2 style="margin: 0; display: flex; gap: 14px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">09</span>Terms</h2>
+      <dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); column-gap: 48px">
+        <sc-for list="{{terms}}" as="t" hint-placeholder-count="10">
+          <div style="display: grid; grid-template-columns: 170px 1fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--hair); font-size: 14px; line-height: 1.55">
+            <dt style="font-weight: 500; letter-spacing: 0.06em">{{t.term}}</dt><dd style="margin: 0; color: #B9B5AA">{{t.def}}</dd>
+          </div>
+        </sc-for>
+      </dl>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"productName":{"editor":"text","default":"VOID","section":"Brand"},"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var name = (this.props.productName ?? 'VOID').trim() || 'VOID';
+    var teeth = '';
+    for (var j = 0; j < 30; j++) {
+      var b = (j * 12) * Math.PI / 180;
+      teeth += 'M' + (180 + 26 * Math.cos(b)).toFixed(1) + ' ' + (75 + 26 * Math.sin(b)).toFixed(1) + 'L' + (180 + 34 * Math.cos(b)).toFixed(1) + ' ' + (75 + 34 * Math.sin(b)).toFixed(1) + ' ';
+    }
+    var C = function (a, k, m, t) { return { a: a, k: k, m: m, t: t }; };
+    var T = function (term, def) { return { term: term, def: def }; };
+    return {
+      name: name, teeth: teeth,
+      controls: [
+        C('Aim angle', '← →  or  A D', 'Drag from probe', 'Drag from probe'),
+        C('Aim power', '↑ ↓  or  W S', 'Drag length', 'Drag length'),
+        C('Launch', 'Space', 'Launch button', 'Launch button'),
+        C('Thrust (in flight)', 'Arrows or WASD', 'Thrust buttons', 'Thrust pad · hold to repeat'),
+        C('Pause', 'Esc or P', 'Pause button', 'Pause button'),
+        C('Restart', 'R', 'Restart button', 'Restart button')
+      ],
+      terms: [
+        T('TRAJECTORY', 'The probe’s path. Solid = flown, dashed = predicted.'),
+        T('GRAVITY ASSIST', 'Passing close to a planet to bend and speed up your path for free.'),
+        T('THRUSTER', 'Small engine on the probe. Fires in four directions.'),
+        T('BURST', 'One thruster firing: 0.28 s, 2.4 u of fuel.'),
+        T('GATE', 'A cycling opening you must pass through before the beacon.'),
+        T('BEACON', 'The mint target. Touch it to complete the stage.'),
+        T('SINGULARITY', 'A black hole. Far stronger pull than any planet.'),
+        T('EVENT HORIZON', 'A singularity’s toothed ring. Crossing it fails the run.'),
+        T('DEBT SCORE', 'Seconds × 10 + fuel × 25. Lower is better.'),
+        T('PAR', 'The target score for a stage.')
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

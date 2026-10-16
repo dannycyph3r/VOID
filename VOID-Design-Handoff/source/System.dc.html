@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VOID · Design system</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--void:#0E0F10;--void-deep:#08090A;--void-raised:#18191B;--starlight:#E8E4D8;--starlight-dim:#B9B5AA;--telemetry:#8A8880;--flare:#82E6D0;--alarm:#D9604C;--hair:rgba(232,228,216,.10);--hair-strong:rgba(232,228,216,.24);--display:'Barlow Condensed','Arial Narrow',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+body{margin:0;background:#0E0F10}
+code{font-family:var(--mono);font-size:12px;color:#B9B5AA}
+.v-scan{background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.35) 3px)}
+</style>
+</helmet>
+<div style="min-height: 100vh; box-sizing: border-box; background: #0E0F10; color: #E8E4D8; font-family: var(--mono); padding: 0 clamp(16px, 4vw, 56px) 96px">
+  <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px">
+
+    <header style="display: flex; flex-direction: column; gap: 10px; padding-top: 56px">
+      <span style="font-size: 12px; letter-spacing: 0.16em; color: var(--telemetry)">H1 · v0.2</span>
+      <h1 style="margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(52px, 6vw, 80px); line-height: 0.9; letter-spacing: 0.06em; text-transform: uppercase">Design system</h1>
+    </header>
+
+    <section aria-labelledby="c-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="c-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">01</span>Color</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
+        <sc-for list="{{colors}}" as="c" hint-placeholder-count="9">
+          <div style="border: 1px solid var(--hair); display: flex; flex-direction: column">
+            <div style="height: 72px; background: {{c.hex}}; border-bottom: 1px solid var(--hair)"></div>
+            <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px">
+              <div style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em">{{c.name}}</span><span style="font-size: 12px; color: var(--telemetry)">{{c.ratio}}</span></div>
+              <code>{{c.token}} · {{c.hex}}</code>
+              <span style="font-size: 12px; line-height: 1.5; color: #B9B5AA">{{c.role}}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <ul style="margin: 0; padding: 0 0 0 18px; display: grid; gap: 6px; font-size: 13px; line-height: 1.6; color: #B9B5AA; max-width: 90ch">
+        <li>Mint (<code>flare</code>) marks what matters now: selection, the primary action, trajectory, beacon, time, score. Never body text, borders at rest or headings.</li>
+        <li>Alarm is the only other hue: event horizons, low fuel, failure. Always paired with a shape (teeth, ✕) so it reads without color.</li>
+        <li>Ratios are against Void. Mint and Alarm differ in lightness (12.9 vs 5.2), not just hue.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="t-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="t-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">02</span>Type</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 16px">
+        <div style="border: 1px solid var(--hair); padding: 22px; display: flex; flex-direction: column; gap: 8px">
+          <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">DISPLAY · BARLOW CONDENSED 500/600</span>
+          <span style="font-family: var(--display); font-weight: 600; font-size: 96px; line-height: 0.85; letter-spacing: 0.06em">VOID 924</span>
+          <span style="font-size: 12px; color: #B9B5AA">Wordmark, headings, stage names, score. Always uppercase, +0.06–0.1em.</span>
+        </div>
+        <div style="border: 1px solid var(--hair); padding: 22px; display: flex; flex-direction: column; gap: 8px">
+          <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">INTERFACE · IBM PLEX MONO 400/500/600</span>
+          <span style="font-size: 44px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; color: #82E6D0">00:38.4</span>
+          <span style="font-size: 12px; color: #B9B5AA">Telemetry, labels, buttons, body copy. Tabular figures always.</span>
+        </div>
+      </div>
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px">
+        <tbody>
+          <sc-for list="{{type}}" as="t" hint-placeholder-count="8">
+            <tr style="border-top: 1px solid var(--hair)">
+              <td style="padding: 12px 16px 12px 0; width: 170px"><code>{{t.token}}</code></td>
+              <td style="padding: 12px 16px 12px 0; font-family: {{t.family}}; font-size: {{t.size}}; font-weight: {{t.weight}}; letter-spacing: {{t.track}}; text-transform: {{t.case}}; line-height: 1">{{t.sample}}</td>
+              <td style="padding: 12px 0; color: #B9B5AA; text-align: right">{{t.spec}}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+      <p style="margin: 0; font-size: 13px; color: #B9B5AA">Floor: 12px anywhere, 13px for body on phones. Instructions on How to Play use sentence case at 15px / 1.65.</p>
+    </section>
+
+    <section aria-labelledby="s-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="s-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">03</span>Space and line</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <sc-for list="{{space}}" as="s" hint-placeholder-count="11">
+            <div style="display: grid; grid-template-columns: 72px 1fr; align-items: center; gap: 12px; font-size: 12px"><code>{{s.token}}</code><span style="display: flex; align-items: center; gap: 10px"><span style="height: 6px; width: {{s.px}}px; background: #E8E4D8"></span><span style="color: var(--telemetry)">{{s.px}}</span></span></div>
+          </sc-for>
+        </div>
+        <dl style="margin: 0; display: grid; grid-template-columns: 150px 1fr; font-size: 13px; align-content: start">
+          <dt style="padding: 10px 0; border-top: 1px solid var(--hair); color: var(--telemetry)">Gutter</dt><dd style="margin: 0; padding: 10px 0; border-top: 1px solid var(--hair)">clamp(16px, 4vw, 56px)</dd>
+          <dt style="padding: 10px 0; border-top: 1px solid var(--hair); color: var(--telemetry)">Header</dt><dd style="margin: 0; padding: 10px 0; border-top: 1px solid var(--hair)">64 · 48 phone</dd>
+          <dt style="padding: 10px 0; border-top: 1px solid var(--hair); color: var(--telemetry)">Hit target</dt><dd style="margin: 0; padding: 10px 0; border-top: 1px solid var(--hair)">44 min · 48 in game · 56 touch</dd>
+          <dt style="padding: 10px 0; border-top: 1px solid var(--hair); color: var(--telemetry)">Radius</dt><dd style="margin: 0; padding: 10px 0; border-top: 1px solid var(--hair)">0. Only bodies and beacons are round.</dd>
+          <dt style="padding: 10px 0; border-top: 1px solid var(--hair); color: var(--telemetry)">Stroke</dt><dd style="margin: 0; padding: 10px 0; border-top: 1px solid var(--hair)">1 hairline · 1.5 predicted · 1.8 flown · 2 focus</dd>
+          <dt style="padding: 10px 0; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); color: var(--telemetry)">Marks</dt><dd style="margin: 0; padding: 10px 0; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair)">Corner brackets, rulers, ▸ cursor, coordinates. One kind per surface.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section aria-labelledby="k-h" style="display: flex; flex-direction: column; gap: 28px">
+      <h2 id="k-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">04</span>Components</h2>
+
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">BUTTON · PRIMARY</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end">
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="height: 52px; display: flex; align-items: center; padding: 0 22px; background: #82E6D0; color: #0E0F10; font-size: 13px; font-weight: 600; letter-spacing: 0.18em">LAUNCH</span><span style="font-size: 12px; color: var(--telemetry)">Default</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="height: 52px; display: flex; align-items: center; padding: 0 22px; background: #A6EEDD; color: #0E0F10; font-size: 13px; font-weight: 600; letter-spacing: 0.18em">LAUNCH</span><span style="font-size: 12px; color: var(--telemetry)">Hover</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="height: 52px; display: flex; align-items: center; padding: 0 22px; background: #82E6D0; color: #0E0F10; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; outline: 2px solid #82E6D0; outline-offset: 3px">LAUNCH</span><span style="font-size: 12px; color: var(--telemetry)">Focus</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="height: 52px; display: flex; align-items: center; padding: 0 22px; background: #66C9B3; color: #0E0F10; font-size: 13px; font-weight: 600; letter-spacing: 0.18em; transform: translateY(1px)">LAUNCH</span><span style="font-size: 12px; color: var(--telemetry)">Pressed</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="height: 52px; display: flex; align-items: center; padding: 0 22px; border: 1px dashed var(--hair-strong); color: #8A8880; font-size: 13px; letter-spacing: 0.14em">CLEAR 03</span><span style="font-size: 12px; color: var(--telemetry)">Disabled</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="height: 52px; display: flex; align-items: center; padding: 0 22px; border: 1px solid var(--hair-strong); font-size: 13px; letter-spacing: 0.18em">STAGES</span><span style="font-size: 12px; color: var(--telemetry)">Secondary</span></div>
+          <div style="display: flex; flex-direction: column; gap: 6px"><span style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--hair-strong)"><svg width="12" height="12" viewBox="0 0 14 14" fill="#E8E4D8" aria-hidden="true"><rect x="2" y="1" width="3" height="12"></rect><rect x="9" y="1" width="3" height="12"></rect></svg></span><span style="font-size: 12px; color: var(--telemetry)">Icon</span></div>
+        </div>
+        <span style="font-size: 12px; color: var(--telemetry)">One primary per screen: Launch, Retry, Resume.</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 28px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">MENU ROW · ACTIVE / REST</span>
+          <div style="border-top: 1px solid var(--hair)">
+            <div style="min-height: 56px; display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 10px; border-bottom: 1px solid var(--hair)"><span style="font-size: 12px; color: #82E6D0">▸</span><span style="font-family: var(--display); font-weight: 500; font-size: 30px; letter-spacing: 0.06em; color: #82E6D0">STAGES</span><span style="font-size: 12px; color: var(--telemetry)">6</span></div>
+            <div style="min-height: 56px; display: grid; grid-template-columns: 24px 1fr auto; align-items: center; gap: 10px; border-bottom: 1px solid var(--hair)"><span></span><span style="font-family: var(--display); font-weight: 500; font-size: 30px; letter-spacing: 0.06em">STATS</span><span></span></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">TABS · TOGGLE</span>
+          <div style="display: flex; gap: 4px"><span style="padding: 12px 14px; border-bottom: 2px solid #82E6D0; color: #82E6D0; font-size: 12px; letter-spacing: 0.16em">LEADERBOARD</span><span style="padding: 12px 14px; color: #8A8880; font-size: 12px; letter-spacing: 0.16em">DAILY</span><span style="padding: 12px 14px; color: #8A8880; font-size: 12px; letter-spacing: 0.16em">PERSONAL</span></div>
+          <div style="display: flex; gap: 10px">
+            <span style="height: 36px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1px solid var(--hair-strong); color: #82E6D0; font-size: 12px; letter-spacing: 0.12em"><span style="width: 8px; height: 8px; background: #82E6D0"></span>ON</span>
+            <span style="height: 36px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1px solid var(--hair-strong); color: #8A8880; font-size: 12px; letter-spacing: 0.12em"><span style="width: 8px; height: 8px; border: 1px solid #8A8880; box-sizing: border-box"></span>OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 28px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">HUD · TIME / FUEL / LOW</span>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid var(--hair)">
+            <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--hair)"><span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">TIME</span><span style="font-size: 22px; font-weight: 500; color: #82E6D0">00:12.4</span></div>
+            <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--hair)"><span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">FUEL</span><div style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 2px"><sc-for list="{{gaugeA}}" as="g" hint-placeholder-count="10"><span style="height: 10px; background: {{g.c}}"></span></sc-for></div></div>
+            <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; letter-spacing: 0.14em; color: #D9604C">FUEL LOW</span><div style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 2px"><sc-for list="{{gaugeB}}" as="g" hint-placeholder-count="10"><span style="height: 10px; background: {{g.c}}"></span></sc-for></div></div>
+          </div>
+          <span style="font-size: 12px; color: var(--telemetry)">HUD = time, fuel, spent, objective. Nothing else during flight.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">STATUS · RESULT</span>
+          <div style="display: flex; flex-direction: column; gap: 14px; border: 1px solid var(--hair); padding: 16px">
+            <span style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.18em; color: #82E6D0"><span style="width: 8px; height: 8px; background: #82E6D0"></span>COMPLETE · STAGE 02</span>
+            <span style="display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.18em; color: #D9604C"><svg width="9" height="9" viewBox="0 0 9 9" aria-hidden="true"><path d="M1 1l7 7M8 1L1 8" stroke="#D9604C" stroke-width="1.6"></path></svg>FAILED · SINGULARITY</span>
+            <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry); border: 1px dashed rgba(138,136,128,.7); padding: 4px 8px">SAMPLE DATA · NOT LIVE</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 28px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">STAGE ROW · SELECTED / CLEARED / LOCKED</span>
+          <div style="border-top: 1px solid var(--hair)">
+            <div style="display: grid; grid-template-columns: 20px 32px 1fr auto; gap: 10px; align-items: center; min-height: 56px; border-bottom: 1px solid var(--hair); background: #18191B"><span style="font-size: 12px; color: #82E6D0; text-align: center">▸</span><span style="font-size: 13px; color: var(--telemetry)">02</span><span style="font-family: var(--display); font-weight: 500; font-size: 24px; letter-spacing: 0.06em">SLINGSHOT</span><span style="font-size: 12px; color: var(--telemetry); padding-right: 10px">✓</span></div>
+            <div style="display: grid; grid-template-columns: 20px 32px 1fr auto; gap: 10px; align-items: center; min-height: 56px; border-bottom: 1px solid var(--hair)"><span></span><span style="font-size: 13px; color: var(--telemetry)">03</span><span style="font-family: var(--display); font-weight: 500; font-size: 24px; letter-spacing: 0.06em">NARROWS</span><span style="font-size: 12px; color: #82E6D0; padding-right: 10px">NEW</span></div>
+            <div style="display: grid; grid-template-columns: 20px 32px 1fr auto; gap: 10px; align-items: center; min-height: 56px; border-bottom: 1px solid var(--hair); color: #8A8880"><span></span><span style="font-size: 13px">04</span><span style="font-family: var(--display); font-weight: 500; font-size: 24px; letter-spacing: 0.06em">SINGULARITY</span><span style="font-size: 12px; padding-right: 10px">LOCK</span></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">MODAL · PAUSE</span>
+          <div style="background: #08090A; padding: 20px; border: 1px solid var(--hair)">
+            <div style="background: #0E0F10; border: 1px solid var(--hair-strong)">
+              <div style="padding: 14px 16px; border-bottom: 1px solid var(--hair); font-family: var(--display); font-weight: 600; font-size: 30px; letter-spacing: 0.1em">PAUSED</div>
+              <div style="padding: 12px 16px; display: flex; flex-direction: column; gap: 6px"><span style="padding: 12px; background: #82E6D0; color: #0E0F10; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-align: center">RESUME</span><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px"><span style="padding: 11px; border: 1px solid var(--hair-strong); font-size: 12px; letter-spacing: 0.14em; text-align: center">RESTART</span><span style="padding: 11px; border: 1px solid var(--hair-strong); font-size: 12px; letter-spacing: 0.14em; text-align: center">STAGES</span></div></div>
+            </div>
+          </div>
+          <span style="font-size: 12px; color: var(--telemetry)">Max 440 wide. Focus trapped; Esc resumes.</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="a-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="a-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">05</span>Analog treatment</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px">
+        <div style="border: 1px solid var(--hair); display: flex; flex-direction: column">
+          <div class="v-scan" style="height: 110px; background-color: #18191B; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 600; font-size: 48px; letter-spacing: 0.1em">VOID</div>
+          <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; font-weight: 600">Scanlines</span><span style="font-size: 12px; line-height: 1.5; color: #B9B5AA">3px period, black 18% on menus, 12% over gameplay. Overlay layer, never on the type.</span></div>
+        </div>
+        <div style="border: 1px solid var(--hair); display: flex; flex-direction: column">
+          <div style="height: 110px; background: radial-gradient(ellipse at 50% 50%,#18191B 50%,#08090A 100%)"></div>
+          <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; font-weight: 600">Vignette</span><span style="font-size: 12px; line-height: 1.5; color: #B9B5AA">Edges fall to 50% black. Menus only; the playfield edge stays crisp.</span></div>
+        </div>
+        <div style="border: 1px solid var(--hair); display: flex; flex-direction: column">
+          <div style="height: 110px; background: #0E0F10; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 500; font-size: 64px; color: #82E6D0; text-shadow: 0 0 22px rgba(130,230,208,.32)">924</div>
+          <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; font-weight: 600">Phosphor glow</span><span style="font-size: 12px; line-height: 1.5; color: #B9B5AA">Mint values only (time, score): 10–22px blur at 32–35%. Wordmark: starlight at 18%.</span></div>
+        </div>
+        <div style="border: 1px solid var(--hair); display: flex; flex-direction: column">
+          <div style="height: 110px; background: #0E0F10; display: flex; align-items: center; justify-content: center; gap: 4px"><span style="width: 18px; height: 40px; background: #E8E4D8; opacity: 1"></span><span style="width: 18px; height: 40px; background: #E8E4D8; opacity: .2"></span><span style="width: 18px; height: 40px; background: #E8E4D8; opacity: .8; transform: translateX(2px)"></span><span style="width: 18px; height: 40px; background: #E8E4D8; opacity: .3"></span><span style="width: 18px; height: 40px; background: #E8E4D8"></span></div>
+          <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; font-weight: 600">Signal instability</span><span style="font-size: 12px; line-height: 1.5; color: #B9B5AA">Stepped opacity + 1–3px shift, 0.4–0.7s, once on screen entry, pause and result. Never loops, never during flight.</span></div>
+        </div>
+      </div>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #B9B5AA; max-width: 90ch">No chromatic aberration, warping, rolling bars or static. Reduced motion removes all signal effects and ambient motion; scanlines and vignette stay because they don't move.</p>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var colors = [
+      { name: 'VOID', hex: '#0E0F10', token: 'void', role: 'Ground and UI panels.', ratio: 'base' },
+      { name: 'VOID DEEP', hex: '#08090A', token: 'voidDeep', role: 'Playfield. Separates world from UI.', ratio: '—' },
+      { name: 'VOID RAISED', hex: '#18191B', token: 'voidRaised', role: 'Selected rows, active segments.', ratio: '—' },
+      { name: 'STARLIGHT', hex: '#E8E4D8', token: 'starlight', role: 'Text, bodies, probe, thrust.', ratio: '15.1:1' },
+      { name: 'STARLIGHT DIM', hex: '#B9B5AA', token: 'starlightDim', role: 'Body copy, secondary values.', ratio: '9.3:1' },
+      { name: 'TELEMETRY', hex: '#8A8880', token: 'telemetry', role: 'Labels, units, inactive states.', ratio: '5.4:1' },
+      { name: 'FLARE', hex: '#82E6D0', token: 'flare', role: 'The accent. Selection, primary, trajectory, beacon, score.', ratio: '12.9:1' },
+      { name: 'ALARM', hex: '#D9604C', token: 'alarm', role: 'Event horizon, low fuel, failure.', ratio: '5.2:1' },
+      { name: 'HAIRLINE', hex: 'rgba(232,228,216,.10)', token: 'hair / hairStrong .24', role: 'Rules and frames.', ratio: '—' }
+    ];
+    var D = "'Barlow Condensed', sans-serif", M = "'IBM Plex Mono', monospace";
+    var type = [
+      { token: 'display.mark', family: D, size: '72px', weight: '600', track: '0.06em', case: 'uppercase', sample: 'VOID', spec: 'clamp(120, 15vw, 232) / 0.8' },
+      { token: 'display.score', family: D, size: '56px', weight: '500', track: '0.02em', case: 'none', sample: '924', spec: 'clamp(120, 13vw, 184) / 0.8 · mint' },
+      { token: 'display.h1', family: D, size: '44px', weight: '600', track: '0.06em', case: 'uppercase', sample: 'Stages', spec: 'clamp(44, 5vw, 64) / 0.9' },
+      { token: 'display.menu', family: D, size: '30px', weight: '500', track: '0.06em', case: 'uppercase', sample: 'How to Play', spec: '30–34 · menu rows' },
+      { token: 'mono.readout', family: M, size: '32px', weight: '500', track: '0', case: 'none', sample: '00:12.4', spec: '38 HUD · 19 phone' },
+      { token: 'mono.value', family: M, size: '20px', weight: '500', track: '0', case: 'none', sample: '78.4', spec: '20–24' },
+      { token: 'mono.body', family: M, size: '15px', weight: '400', track: '0', case: 'none', sample: 'Every planet pulls the probe.', spec: '14–15 / 1.65' },
+      { token: 'mono.label', family: M, size: '12px', weight: '400', track: '0.16em', case: 'uppercase', sample: 'Fuel · Time', spec: '12 · +0.12–0.18em' }
+    ];
+    var space = [1, 2, 3, 4, 5, 6, 8, 10, 14, 18, 24].map(function (n) { return { token: 'space.' + n, px: n * 4 }; });
+    var g = function (n, c) { var a = []; for (var i = 0; i < 10; i++) a.push({ c: i < n ? c : 'rgba(232,228,216,.09)' }); return a; };
+    return { colors: colors, type: type, space: space, gaugeA: g(8, '#E8E4D8'), gaugeB: g(2, '#D9604C') };
+  }
+}
+</script>
+</body>
+</html>

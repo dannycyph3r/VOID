@@ -1,0 +1,28 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-14T15:00:00Z"},
+  "title": "VOID",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 900, "title": "01 Home", "expand": "fill", "is_interactive": true},
+    "Missions.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 900, "title": "02 Stages", "expand": "fill", "is_interactive": true},
+    "Play.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 900, "title": "03 Flight", "expand": "fill", "is_interactive": true},
+    "Result.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 900, "title": "04 Result: complete", "expand": "fill", "is_interactive": true},
+    "ResultFail.dc.html": {"x": 6080, "y": 0, "w": 1440, "h": 900, "title": "04b Result: failed", "expand": "fill", "is_interactive": true},
+    "Leaderboard.dc.html": {"x": 0, "y": 1400, "w": 1440, "h": 1100, "title": "05 Stats", "expand": "fill", "is_interactive": true},
+    "HowTo.dc.html": {"x": 1520, "y": 1400, "w": 1440, "h": 2000, "title": "06 How to Play", "expand": "fill", "is_interactive": true},
+    "HomeMobile.dc.html": {"x": 3040, "y": 1400, "w": 390, "h": 844, "title": "01m Home, phone", "is_interactive": true},
+    "PlayMobile.dc.html": {"x": 3510, "y": 1400, "w": 390, "h": 844, "title": "03m Flight, phone", "is_interactive": true},
+    "ResultMobile.dc.html": {"x": 3980, "y": 1400, "w": 390, "h": 844, "title": "04m Result, phone", "is_interactive": true},
+    "System.dc.html": {"x": 0, "y": 3800, "w": 1440, "h": 2900, "title": "H1 Design system", "expand": "fill"},
+    "Handoff.dc.html": {"x": 1520, "y": 3800, "w": 1440, "h": 3500, "title": "H2 Engine & build handoff", "expand": "fill"}
+  },
+  "order": ["Main.dc.html", "Missions.dc.html", "Play.dc.html", "Result.dc.html", "ResultFail.dc.html", "Leaderboard.dc.html", "HowTo.dc.html", "HomeMobile.dc.html", "PlayMobile.dc.html", "ResultMobile.dc.html", "System.dc.html", "Handoff.dc.html"],
+  "notes": {
+    "flow": {"x": 0, "y": -300, "text": "Flight path: clickable prototype", "kind": "title1", "maxW": 7520},
+    "states": {"x": 0, "y": 1100, "text": "Stats, How to Play, phone", "kind": "title1", "maxW": 4370},
+    "handoff": {"x": 0, "y": 3500, "text": "Design-system handoff", "kind": "title1", "maxW": 2960}
+  },
+  "designSystems": []
+}

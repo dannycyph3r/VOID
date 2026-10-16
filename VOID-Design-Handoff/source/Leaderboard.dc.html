@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VOID · Stats</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--void:#0E0F10;--void-deep:#08090A;--void-raised:#18191B;--starlight:#E8E4D8;--starlight-dim:#B9B5AA;--telemetry:#8A8880;--flare:#82E6D0;--alarm:#D9604C;--hair:rgba(232,228,216,.10);--hair-strong:rgba(232,228,216,.24);--display:'Barlow Condensed','Arial Narrow',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+body{margin:0;background:#0E0F10}
+a{color:#E8E4D8;text-decoration:none}a:hover{color:#FFFFFF}
+a:focus-visible,button:focus-visible{outline:2px solid #82E6D0;outline-offset:3px}
+.v-fx{position:absolute;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.16) 3px)}
+.v-vig{position:absolute;inset:0;pointer-events:none;z-index:39;background:radial-gradient(ellipse at 50% 40%,rgba(0,0,0,0) 60%,rgba(0,0,0,.45) 100%)}
+.v-ghost:hover{background:rgba(232,228,216,.05)}
+.v-tab:hover{color:#E8E4D8 !important}
+@keyframes v-scan{0%{opacity:.3}50%{opacity:.75}100%{opacity:.3}}
+.v-skel{animation:v-scan 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.v-skel{animation:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; box-sizing: border-box; background: #0E0F10; color: #E8E4D8; font-family: var(--mono); display: flex; flex-direction: column; padding: 0 clamp(16px, 4vw, 56px) 56px; position: relative; overflow: hidden">
+  <div class="v-vig"></div>
+  <div class="v-fx"></div>
+
+  <header style="display: flex; align-items: center; height: 64px; border-bottom: 1px solid var(--hair)">
+    <a href="Main.dc.html" aria-label="Back to home" style="display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; letter-spacing: 0.14em">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M14 8H2M7 3L2 8l5 5"></path></svg>
+      <span>{{name}}</span>
+    </a>
+  </header>
+
+  <main style="width: 100%; max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; padding-top: 36px; position: relative; z-index: 1">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap">
+      <h1 style="margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(44px, 5vw, 64px); line-height: 0.9; letter-spacing: 0.06em; text-transform: uppercase">Stats</h1>
+      <div role="tablist" aria-label="Stats view" style="display: flex; gap: 4px">
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+          <button class="v-tab" type="button" role="tab" aria-selected="{{t.on}}" onClick="{{t.pick}}" style="min-height: 44px; padding: 0 14px; border: 0; border-bottom: 2px solid {{t.line}}; background: transparent; color: {{t.fg}}; font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; cursor: pointer">{{t.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; min-height: 48px; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair)">
+      <span style="font-size: 12px; letter-spacing: 0.14em; color: #B9B5AA">{{period}}</span>
+      <sc-if value="{{isGlobal}}" hint-placeholder-val="{{ true }}">
+        <div role="group" aria-label="Stage" style="display: flex; gap: 2px; flex-wrap: wrap">
+          <sc-for list="{{stages}}" as="p" hint-placeholder-count="6">
+            <button type="button" aria-pressed="{{p.on}}" onClick="{{p.pick}}" style="min-width: 44px; height: 44px; border: 0; background: {{p.bg}}; color: {{p.fg}}; font-family: var(--mono); font-size: 13px; cursor: pointer">{{p.id}}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{isDaily}}" hint-placeholder-val="{{ false }}">
+        <span style="font-size: 12px; color: var(--telemetry); font-variant-numeric: tabular-nums">CLOSES {{countdown}}</span>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{isSample}}" hint-placeholder-val="{{ true }}">
+      <span style="align-self: flex-start; font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry); border: 1px dashed rgba(138,136,128,.7); padding: 4px 8px">SAMPLE DATA · NOT LIVE</span>
+
+      <sc-if value="{{isBoard}}" hint-placeholder-val="{{ true }}">
+        <div style="overflow-x: auto">
+          <table style="width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums">
+            <caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">{{period}}</caption>
+            <thead><tr style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">
+              <th scope="col" style="text-align: left; font-weight: 400; padding: 0 0 10px; width: 64px">#</th>
+              <th scope="col" style="text-align: left; font-weight: 400; padding: 0 0 10px">PILOT</th>
+              <th scope="col" style="text-align: right; font-weight: 400; padding: 0 0 10px">SCORE</th>
+              <th scope="col" style="text-align: right; font-weight: 400; padding: 0 0 10px">TIME</th>
+              <th scope="col" style="text-align: right; font-weight: 400; padding: 0 0 10px">FUEL</th>
+            </tr></thead>
+            <tbody>
+              <sc-for list="{{rows}}" as="r" hint-placeholder-count="8">
+                <tr style="border-top: 1px solid var(--hair)">
+                  <td style="padding: 13px 0; color: {{r.rankColor}}">{{r.rank}}</td>
+                  <td style="padding: 13px 0">{{r.name}}</td>
+                  <td style="padding: 13px 0; text-align: right; font-weight: 500">{{r.debt}}</td>
+                  <td style="padding: 13px 0; text-align: right; color: #B9B5AA">{{r.time}}</td>
+                  <td style="padding: 13px 0; text-align: right; color: #B9B5AA">{{r.fuel}}</td>
+                </tr>
+              </sc-for>
+            </tbody>
+            <sc-if value="{{showYou}}" hint-placeholder-val="{{ true }}">
+              <tfoot><tr style="border-top: 1px solid #82E6D0; border-bottom: 1px solid var(--hair)">
+                <td style="padding: 12px 0; color: #82E6D0">—</td>
+                <td style="padding: 12px 0; color: #82E6D0">YOU</td>
+                <td style="padding: 12px 0; text-align: right; font-weight: 500">924</td>
+                <td colspan="2" style="padding: 8px 0; text-align: right"><button class="v-ghost" type="button" style="min-height: 40px; padding: 0 14px; border: 1px solid var(--hair-strong); background: transparent; color: #E8E4D8; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; cursor: pointer">SUBMIT</button></td>
+              </tr></tfoot>
+            </sc-if>
+          </table>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isPersonal}}" hint-placeholder-val="{{ false }}">
+        <dl style="margin: 0; display: flex; flex-wrap: wrap; border: 1px solid var(--hair)">
+          <sc-for list="{{totals}}" as="k" hint-placeholder-count="4">
+            <div style="flex: 1 1 160px; padding: 14px 18px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--hair)"><dt style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">{{k.label}}</dt><dd style="margin: 0; font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums">{{k.value}}</dd></div>
+          </sc-for>
+        </dl>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px">
+          <div style="overflow-x: auto">
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums">
+              <caption style="text-align: left; font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry); padding-bottom: 10px">PERSONAL BEST</caption>
+              <tbody>
+                <sc-for list="{{bests}}" as="b" hint-placeholder-count="6">
+                  <tr style="border-top: 1px solid var(--hair); color: {{b.color}}">
+                    <td style="padding: 12px 0; width: 40px; color: var(--telemetry)">{{b.id}}</td>
+                    <td style="padding: 12px 0">{{b.name}}</td>
+                    <td style="padding: 12px 0; text-align: right; font-weight: 500">{{b.score}}</td>
+                    <td style="padding: 12px 0; text-align: right; color: #B9B5AA">{{b.time}}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <div style="overflow-x: auto">
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums">
+              <caption style="text-align: left; font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry); padding-bottom: 10px">RECENT</caption>
+              <tbody>
+                <sc-for list="{{recent}}" as="r" hint-placeholder-count="6">
+                  <tr style="border-top: 1px solid var(--hair)">
+                    <td style="padding: 12px 0; width: 28px; color: {{r.markColor}}">{{r.mark}}</td>
+                    <td style="padding: 12px 0">{{r.stage}}</td>
+                    <td style="padding: 12px 0; text-align: right; font-weight: 500">{{r.score}}</td>
+                    <td style="padding: 12px 0; text-align: right; color: #B9B5AA">{{r.time}}</td>
+                    <td style="padding: 12px 0; text-align: right; color: var(--telemetry)">{{r.when}}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </sc-if>
+    </sc-if>
+
+    <sc-if value="{{isLoading}}" hint-placeholder-val="{{ false }}">
+      <div role="status" aria-busy="true" aria-label="Loading" style="display: flex; flex-direction: column">
+        <sc-for list="{{skeleton}}" as="k" hint-placeholder-count="6">
+          <div style="display: grid; grid-template-columns: 64px 1fr 100px 100px 100px; gap: 16px; align-items: center; height: 50px; border-top: 1px solid var(--hair)">
+            <span class="v-skel" style="width: 16px; height: 8px; background: rgba(232,228,216,.12)"></span>
+            <span class="v-skel" style="width: {{k.w}}; height: 8px; background: rgba(232,228,216,.12)"></span>
+            <span class="v-skel" style="height: 8px; background: rgba(232,228,216,.12)"></span>
+            <span class="v-skel" style="height: 8px; background: rgba(232,228,216,.07)"></span>
+            <span class="v-skel" style="height: 8px; background: rgba(232,228,216,.07)"></span>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isEmpty}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding: 64px 0">
+        <span style="font-family: var(--display); font-weight: 500; font-size: 36px; letter-spacing: 0.08em; text-transform: uppercase">No runs yet</span>
+        <a class="v-ghost" href="{{emptyHref}}" style="min-height: 48px; display: flex; align-items: center; padding: 0 18px; border: 1px solid var(--hair-strong); font-size: 12px; letter-spacing: 0.16em">{{emptyCta}}</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isDown}}" hint-placeholder-val="{{ false }}">
+      <div role="alert" style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 64px 0">
+        <span style="display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 500; font-size: 36px; letter-spacing: 0.08em; text-transform: uppercase; color: #D9604C">No signal</span>
+        <span style="font-size: 14px; color: #B9B5AA">Runs are saved on this device.</span>
+        <button class="v-ghost" type="button" onClick="{{retry}}" style="min-height: 48px; padding: 0 18px; border: 1px solid var(--hair-strong); background: transparent; color: #E8E4D8; font-family: var(--mono); font-size: 12px; letter-spacing: 0.16em; cursor: pointer">RETRY</button>
+      </div>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"productName":{"editor":"text","default":"VOID","section":"Brand"},"dataState":{"editor":"enum","options":["sample","loading","empty","unavailable"],"default":"sample","section":"Prototype"},"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'global', stage: '02', override: null };
+  }
+  componentDidMount() { this._t = setInterval(() => this.forceUpdate(), 1000); }
+  componentWillUnmount() { clearInterval(this._t); clearTimeout(this._r); }
+  renderVals() {
+    var self = this, s = this.state;
+    var name = (this.props.productName ?? 'VOID').trim() || 'VOID';
+    var ds = s.override || (this.props.dataState ?? 'sample');
+    var now = new Date();
+    var y = now.getUTCFullYear(), m = now.getUTCMonth(), d = now.getUTCDate();
+    var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    var dnames = ['Tidewater','Perihelion','Quiet Shear','Lagrange','Lantern','Spindle','Low Tide'];
+    var dailyName = dnames[Math.floor(Date.UTC(y, m, d) / 86400000) % dnames.length];
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var left = Math.max(0, Date.UTC(y, m, d + 1) - now.getTime());
+    var stageNames = { '01': 'FIRST LIGHT', '02': 'SLINGSHOT', '03': 'NARROWS', '04': 'SINGULARITY', '05': 'BINARY', '06': 'DEEP FIELD' };
+
+    var tabs = [['global', 'LEADERBOARD'], ['daily', 'DAILY'], ['personal', 'PERSONAL']].map(function (t) {
+      var on = s.tab === t[0];
+      return { label: t[1], on: on, fg: on ? '#82E6D0' : '#8A8880', line: on ? '#82E6D0' : 'transparent', pick: function () { self.setState({ tab: t[0] }); } };
+    });
+    var stages = ['01', '02', '03', '04', '05', '06'].map(function (id) {
+      var on = s.stage === id;
+      return { id: id, on: on, bg: on ? '#18191B' : 'transparent', fg: on ? '#82E6D0' : '#8A8880', pick: function () { self.setState({ stage: id }); } };
+    });
+    var base = s.tab === 'daily' ? 1180 : 610;
+    var rows = [];
+    for (var i = 0; i < 8; i++) {
+      rows.push({ rank: pad(i + 1), name: 'SAMPLE_' + pad(i + 1), debt: (base + i * 37 + i * i * 9).toLocaleString('en-US'), time: (24 + i * 1.7).toFixed(2), fuel: (8 + i * 2.1).toFixed(1), rankColor: i === 0 ? '#82E6D0' : '#8A8880' });
+    }
+    var bests = [
+      ['01', 'FIRST LIGHT', '312', '19.80'], ['02', 'SLINGSHOT', '924', '38.42'], ['03', 'NARROWS', '—', '—'],
+      ['04', 'SINGULARITY', '—', '—'], ['05', 'BINARY', '—', '—'], ['06', 'DEEP FIELD', '—', '—']
+    ].map(function (b) { return { id: b[0], name: b[1], score: b[2], time: b[3], color: b[2] === '—' ? '#8A8880' : '#E8E4D8' }; });
+    var recent = [
+      ['✓', '02 SLINGSHOT', '924', '38.42', '2 MIN'], ['✕', '02 SLINGSHOT', '—', '21.70', '6 MIN'], ['✓', '02 SLINGSHOT', '1,042', '41.10', '1 H'],
+      ['✕', 'DAILY', '—', '33.05', '1 H'], ['✓', '01 FIRST LIGHT', '312', '19.80', '2 D'], ['✓', '01 FIRST LIGHT', '388', '22.31', '2 D']
+    ].map(function (r) { return { mark: r[0], markColor: r[0] === '✓' ? '#82E6D0' : '#D9604C', stage: r[1], score: r[2], time: r[3], when: r[4] }; });
+
+    var period = s.tab === 'global' ? 'ALL TIME · ' + s.stage + ' ' + stageNames[s.stage]
+      : s.tab === 'daily' ? 'DAILY · ' + dailyName.toUpperCase() + ' · ' + pad(d) + ' ' + months[m] + ' ' + y + ' UTC'
+      : 'THIS DEVICE';
+    return {
+      name: name, tabs: tabs, stages: stages, rows: rows, bests: bests, recent: recent, period: period,
+      totals: [{ label: 'RUNS', value: '47' }, { label: 'CLEARED', value: '2/6' }, { label: 'FLIGHT TIME', value: '18:22' }, { label: 'FUEL', value: '812 u' }],
+      countdown: pad(Math.floor(left / 3600000)) + ':' + pad(Math.floor(left / 60000) % 60) + ':' + pad(Math.floor(left / 1000) % 60),
+      isGlobal: s.tab === 'global', isDaily: s.tab === 'daily', isPersonal: s.tab === 'personal', isBoard: s.tab !== 'personal',
+      showYou: s.tab === 'global' && s.stage === '02',
+      isSample: ds === 'sample', isLoading: ds === 'loading', isEmpty: ds === 'empty', isDown: ds === 'unavailable',
+      skeleton: [{ w: '60%' }, { w: '42%' }, { w: '70%' }, { w: '50%' }, { w: '64%' }, { w: '38%' }],
+      emptyCta: s.tab === 'daily' ? 'FLY DAILY' : 'STAGES',
+      emptyHref: s.tab === 'daily' ? 'Play.dc.html' : 'Missions.dc.html',
+      retry: function () {
+        self.setState({ override: 'loading' });
+        clearTimeout(self._r);
+        self._r = setTimeout(function () { self.setState({ override: null }); }, 1400);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

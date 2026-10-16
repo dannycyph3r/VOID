@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VOID · Stages</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--void:#0E0F10;--void-deep:#08090A;--void-raised:#18191B;--starlight:#E8E4D8;--starlight-dim:#B9B5AA;--telemetry:#8A8880;--flare:#82E6D0;--alarm:#D9604C;--hair:rgba(232,228,216,.10);--hair-strong:rgba(232,228,216,.24);--display:'Barlow Condensed','Arial Narrow',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+body{margin:0;background:#0E0F10}
+a{color:#E8E4D8;text-decoration:none}a:hover{color:#FFFFFF}
+a:focus-visible,button:focus-visible{outline:2px solid #82E6D0;outline-offset:3px}
+.v-fx{position:absolute;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.18) 3px)}
+.v-vig{position:absolute;inset:0;pointer-events:none;z-index:39;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 58%,rgba(0,0,0,.5) 100%)}
+.v-primary:hover{background:#A6EEDD !important}
+.v-row:hover{background:rgba(232,228,216,.035) !important}
+@keyframes v-flow{to{stroke-dashoffset:-60}}
+@keyframes v-swap{0%{opacity:.2;transform:translateX(2px)}30%{opacity:.9}45%{opacity:.5}100%{opacity:1;transform:none}}
+.v-flow{animation:v-flow 3s linear infinite}
+.v-swap{animation:v-swap .32s steps(5) both}
+@media (prefers-reduced-motion: reduce){.v-flow,.v-swap{animation:none !important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; box-sizing: border-box; background: #0E0F10; color: #E8E4D8; font-family: var(--mono); display: flex; flex-direction: column; padding: 0 clamp(16px, 4vw, 56px) 40px; position: relative; overflow: hidden">
+  <div class="v-vig"></div>
+  <div class="v-fx"></div>
+
+  <header style="display: flex; align-items: center; gap: 16px; height: 64px; border-bottom: 1px solid var(--hair)">
+    <a href="Main.dc.html" aria-label="Back to home" style="display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; letter-spacing: 0.14em">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M14 8H2M7 3L2 8l5 5"></path></svg>
+      <span>{{name}}</span>
+    </a>
+  </header>
+
+  <main style="flex: 1 1 auto; display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 64px); padding-top: 36px; position: relative; z-index: 1">
+    <section style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+      <h1 style="margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(44px, 5vw, 64px); line-height: 0.9; letter-spacing: 0.06em; text-transform: uppercase">Stages</h1>
+
+      <button class="v-row" type="button" onClick="{{pickDaily}}" aria-pressed="{{dailySelected}}" style="text-align: left; cursor: pointer; font-family: var(--mono); color: #E8E4D8; background: {{dailyBg}}; border: 1px solid {{dailyBorder}}; padding: 16px 18px; display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; align-items: center">
+        <span style="font-size: 12px; letter-spacing: 0.16em; color: #82E6D0">DAILY · {{dailyDate}}</span>
+        <span style="font-size: 12px; color: var(--telemetry); font-variant-numeric: tabular-nums; text-align: right">{{countdown}}</span>
+        <span style="font-family: var(--display); font-weight: 500; font-size: 30px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1">{{dailyName}}</span>
+        <span></span>
+      </button>
+
+      <ol aria-label="Stages" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--hair)">
+        <sc-for list="{{courses}}" as="c" hint-placeholder-count="6">
+          <li style="border-bottom: 1px solid var(--hair)">
+            <button class="v-row" type="button" onClick="{{c.pick}}" aria-pressed="{{c.selected}}" style="width: 100%; min-height: 64px; cursor: pointer; text-align: left; font-family: var(--mono); color: {{c.color}}; background: {{c.bg}}; border: 0; padding: 8px 12px 8px 0; display: grid; grid-template-columns: 24px 40px minmax(0, 1fr) auto 48px; gap: 12px; align-items: center">
+              <span style="font-size: 12px; color: {{c.markColor}}; text-align: center">{{c.mark}}</span>
+              <span style="font-size: 13px; color: var(--telemetry)">{{c.num}}</span>
+              <span style="display: flex; align-items: baseline; gap: 14px; min-width: 0">
+                <span style="font-family: var(--display); font-weight: 500; font-size: 26px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1">{{c.title}}</span>
+                <span style="font-size: 12px; letter-spacing: 0.1em; color: var(--telemetry); white-space: nowrap">{{c.mechanic}}</span>
+              </span>
+              <span aria-label="Difficulty {{c.level}} of 5" style="display: flex; gap: 3px">
+                <sc-for list="{{c.pips}}" as="p" hint-placeholder-count="5"><span style="width: 6px; height: 12px; background: {{p.fill}}"></span></sc-for>
+              </span>
+              <span style="font-size: 12px; letter-spacing: 0.08em; text-align: right; color: {{c.statusColor}}">{{c.status}}</span>
+            </button>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <section aria-label="Selected stage" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+      <div class="v-swap" style="display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-size: 12px; letter-spacing: 0.16em; color: var(--telemetry)">{{sel.label}}</span>
+            <span style="font-family: var(--display); font-weight: 600; font-size: 44px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 0.9">{{sel.title}}</span>
+          </div>
+          <span style="font-size: 12px; color: var(--telemetry); letter-spacing: 0.1em">{{sel.coords}}</span>
+        </div>
+        <div style="position: relative; width: 100%; max-width: 480px; aspect-ratio: 1 / 1; background: #08090A; border: 1px solid var(--hair-strong)">
+          <svg viewBox="0 0 100 100" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%">
+            <path d="M0 25H100M0 50H100M0 75H100M25 0V100M50 0V100M75 0V100" stroke="rgba(232,228,216,.05)" stroke-width="0.3"></path>
+            <path d="M2 2h4M2 2v4M98 2h-4M98 2v4M2 98h4M2 98v-4M98 98h-4M98 98v-4" stroke="rgba(232,228,216,.4)" stroke-width="0.3"></path>
+            <path class="v-flow" d="{{sel.path}}" fill="none" stroke="#82E6D0" stroke-width="0.6" stroke-dasharray="1.6 1.8"></path>
+          </svg>
+          <sc-for list="{{sel.bodies}}" as="b" hint-placeholder-count="4">
+            <sc-if value="{{b.isPlanet}}" hint-placeholder-val="{{ true }}">
+              <div style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: {{b.well}}%; aspect-ratio: 1 / 1; transform: translate(-50%, -50%); border-radius: 50%; border: 1px dashed rgba(138,136,128,.45); box-sizing: border-box"></div>
+              <div style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: {{b.d}}%; aspect-ratio: 1 / 1; transform: translate(-50%, -50%); border-radius: 50%; background: #E8E4D8"></div>
+            </sc-if>
+            <sc-if value="{{b.isHole}}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: {{b.well}}%; aspect-ratio: 1 / 1; transform: translate(-50%, -50%); border-radius: 50%; border: 2px dotted #D9604C; box-sizing: border-box"></div>
+              <div style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: {{b.d}}%; aspect-ratio: 1 / 1; transform: translate(-50%, -50%); border-radius: 50%; background: #000000; border: 1px solid #E8E4D8; box-sizing: border-box"></div>
+            </sc-if>
+            <sc-if value="{{b.isGate}}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: 9%; aspect-ratio: 1 / 1; transform: translate(-50%, -50%) rotate(-40deg); border-left: 2px solid #E8E4D8; border-right: 2px solid #E8E4D8; box-sizing: border-box"></div>
+            </sc-if>
+            <sc-if value="{{b.isLaunch}}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: 11px; height: 11px; transform: translate(-50%, -50%) rotate(45deg); background: #E8E4D8"></div>
+            </sc-if>
+            <sc-if value="{{b.isBeacon}}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; left: {{b.x}}%; top: {{b.y}}%; width: 26px; height: 26px; transform: translate(-50%, -50%); border-radius: 50%; border: 1px solid #82E6D0; box-sizing: border-box; display: flex; align-items: center; justify-content: center"><div style="width: 7px; height: 7px; border-radius: 50%; background: #82E6D0"></div></div>
+            </sc-if>
+          </sc-for>
+        </div>
+        <dl style="margin: 0; display: flex; gap: 32px; flex-wrap: wrap; font-variant-numeric: tabular-nums">
+          <div style="display: flex; gap: 10px; align-items: baseline"><dt style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">FUEL</dt><dd style="margin: 0; font-size: 16px">{{sel.fuel}}</dd></div>
+          <div style="display: flex; gap: 10px; align-items: baseline"><dt style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">PAR</dt><dd style="margin: 0; font-size: 16px">{{sel.par}}</dd></div>
+          <div style="display: flex; gap: 10px; align-items: baseline"><dt style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">DIFF</dt><dd style="margin: 0; font-size: 16px">{{sel.level}}/5</dd></div>
+        </dl>
+      </div>
+      <sc-if value="{{sel.open}}" hint-placeholder-val="{{ true }}">
+        <a class="v-primary" href="Play.dc.html" style="height: 56px; max-width: 480px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; background: #82E6D0; color: #0E0F10; font-size: 13px; font-weight: 600; letter-spacing: 0.18em">
+          <span>LAUNCH</span>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"></path></svg>
+        </a>
+      </sc-if>
+      <sc-if value="{{sel.locked}}" hint-placeholder-val="{{ false }}">
+        <button type="button" disabled style="height: 56px; max-width: 480px; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; background: transparent; border: 1px dashed var(--hair-strong); color: var(--telemetry); font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em; cursor: not-allowed">
+          <span>{{sel.lockHint}}</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="7" width="10" height="7"></rect><path d="M5 7V5a3 3 0 0 1 6 0v2"></path></svg>
+        </button>
+      </sc-if>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"productName":{"editor":"text","default":"VOID","section":"Brand"},"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { picked: '02' };
+  }
+  componentDidMount() { this._t = setInterval(() => this.forceUpdate(), 1000); }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    var name = (this.props.productName ?? 'VOID').trim() || 'VOID';
+    var now = new Date();
+    var y = now.getUTCFullYear(), m = now.getUTCMonth(), d = now.getUTCDate();
+    var months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    var dnames = ['Tidewater','Perihelion','Quiet Shear','Lagrange','Lantern','Spindle','Low Tide'];
+    var dayIndex = Math.floor(Date.UTC(y, m, d) / 86400000);
+    var left = Math.max(0, Date.UTC(y, m, d + 1) - now.getTime());
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var countdown = pad(Math.floor(left / 3600000)) + ':' + pad(Math.floor(left / 60000) % 60) + ':' + pad(Math.floor(left / 1000) % 60);
+    var dailyName = dnames[dayIndex % dnames.length];
+
+    var P = function (x, y, d) { return { x: x, y: y, d: d, well: d * 2.6, isPlanet: true }; };
+    var H = function (x, y) { return { x: x, y: y, d: 6, well: 22, isHole: true }; };
+    var G = function (x, y) { return { x: x, y: y, isGate: true }; };
+    var L = function (x, y) { return { x: x, y: y, isLaunch: true }; };
+    var B = function (x, y) { return { x: x, y: y, isBeacon: true }; };
+
+    var data = [
+      { id: '01', title: 'First Light', mechanic: 'WELL', level: 1, fuel: 120, par: '400', state: 'done', coords: 'RA 02h · DEC +14',
+        bodies: [P(50, 52, 18), L(12, 84), B(86, 20)], path: 'M12 84 C 28 70, 30 42, 46 32 C 60 24, 74 22, 86 20' },
+      { id: '02', title: 'Slingshot', mechanic: 'ASSIST', level: 2, fuel: 100, par: '900', state: 'done', coords: 'RA 07h · DEC −03',
+        bodies: [P(46, 56, 16), P(74, 30, 6), L(10, 86), B(88, 16)], path: 'M10 86 C 28 82, 40 76, 52 72 C 64 68, 64 50, 58 42 C 52 32, 68 20, 88 16' },
+      { id: '03', title: 'Narrows', mechanic: 'GATES', level: 3, fuel: 90, par: '1,300', state: 'open', coords: 'RA 11h · DEC +41',
+        bodies: [P(32, 40, 14), P(68, 62, 14), G(50, 50), L(8, 82), B(90, 18)], path: 'M8 82 C 24 76, 40 66, 50 50 C 58 38, 74 28, 90 18' },
+      { id: '04', title: 'Singularity', mechanic: 'BLACK HOLE', level: 4, fuel: 80, par: '1,600', state: 'locked', lock: 'CLEAR 03', coords: 'RA 16h · DEC −22',
+        bodies: [P(30, 34, 14), H(60, 58), L(10, 88), B(88, 28)], path: 'M10 88 C 28 72, 40 58, 44 46 C 50 30, 70 22, 88 28' },
+      { id: '05', title: 'Binary', mechanic: 'TWIN WELLS', level: 4, fuel: 80, par: '1,750', state: 'locked', lock: 'CLEAR 04', coords: 'RA 19h · DEC +08',
+        bodies: [P(42, 46, 12), P(60, 56, 10), L(8, 20), B(90, 84)], path: 'M8 20 C 30 22, 40 32, 51 51 C 62 70, 76 78, 90 84' },
+      { id: '06', title: 'Deep Field', mechanic: 'ALL', level: 5, fuel: 70, par: '2,400', state: 'locked', lock: 'CLEAR 05', coords: 'RA 23h · DEC −61',
+        bodies: [P(24, 32, 12), P(70, 38, 16), H(44, 70), G(82, 68), L(8, 90), B(92, 12)], path: 'M8 90 C 20 70, 18 50, 30 46 C 46 40, 56 60, 70 62 C 80 64, 86 50, 92 12' }
+    ];
+    var daily = { id: 'D', title: dailyName, level: 3, fuel: 90, par: '1,400', state: 'open', coords: 'SEED ' + y + pad(m + 1) + pad(d),
+      bodies: [P(56, 36, 16), H(30, 64), G(70, 66), L(10, 50), B(90, 82)], path: 'M10 50 C 30 40, 40 26, 54 22 C 72 18, 80 40, 72 60 C 68 70, 80 78, 90 82' };
+
+    var picked = this.state.picked, self = this;
+    var courses = data.map(function (c) {
+      var sel = c.id === picked, locked = c.state === 'locked';
+      return {
+        num: c.id, title: c.title, mechanic: c.mechanic, level: c.level,
+        pips: [1, 2, 3, 4, 5].map(function (n) { return { fill: n <= c.level ? (locked ? '#5A5954' : '#E8E4D8') : 'rgba(232,228,216,.12)' }; }),
+        status: c.state === 'done' ? '✓' : (locked ? 'LOCK' : 'NEW'),
+        statusColor: c.state === 'open' ? '#82E6D0' : '#8A8880',
+        color: locked ? '#8A8880' : '#E8E4D8',
+        bg: sel ? '#18191B' : 'transparent',
+        mark: sel ? '▸' : '', markColor: '#82E6D0',
+        selected: sel,
+        pick: function () { self.setState({ picked: c.id }); }
+      };
+    });
+    var s = picked === 'D' ? daily : data.filter(function (c) { return c.id === picked; })[0];
+    return {
+      name: name,
+      dailyDate: pad(d) + ' ' + months[m],
+      dailyName: dailyName, countdown: countdown,
+      dailySelected: picked === 'D',
+      dailyBg: picked === 'D' ? '#18191B' : 'transparent',
+      dailyBorder: picked === 'D' ? '#82E6D0' : 'rgba(232,228,216,.24)',
+      pickDaily: function () { self.setState({ picked: 'D' }); },
+      courses: courses,
+      sel: {
+        label: picked === 'D' ? 'DAILY' : 'STAGE ' + s.id, title: s.title, coords: s.coords,
+        fuel: s.fuel, par: s.par, level: s.level, bodies: s.bodies, path: s.path,
+        open: s.state !== 'locked', locked: s.state === 'locked', lockHint: s.lock || ''
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

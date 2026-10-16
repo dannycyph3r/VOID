@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VOID · Engine and build</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--void:#0E0F10;--void-deep:#08090A;--starlight:#E8E4D8;--starlight-dim:#B9B5AA;--telemetry:#8A8880;--flare:#82E6D0;--alarm:#D9604C;--hair:rgba(232,228,216,.10);--hair-strong:rgba(232,228,216,.24);--display:'Barlow Condensed','Arial Narrow',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+body{margin:0;background:#0E0F10}
+code{font-family:var(--mono);font-size:12px;color:#B9B5AA}
+</style>
+</helmet>
+<div style="min-height: 100vh; box-sizing: border-box; background: #0E0F10; color: #E8E4D8; font-family: var(--mono); padding: 0 clamp(16px, 4vw, 56px) 96px">
+  <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px">
+
+    <header style="display: flex; flex-direction: column; gap: 10px; padding-top: 56px">
+      <span style="font-size: 12px; letter-spacing: 0.16em; color: var(--telemetry)">H2 · v0.2</span>
+      <h1 style="margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(52px, 6vw, 80px); line-height: 0.9; letter-spacing: 0.06em; text-transform: uppercase">Engine and build</h1>
+      <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #B9B5AA; max-width: 72ch">Inside the playfield frame: rendered by the 2D engine. Outside it: React DOM. The prototype fakes the simulation with fixed paths and a ticking clock.</p>
+    </header>
+
+    <section aria-labelledby="w-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="w-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">06</span>World assets</h2>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #B9B5AA; max-width: 90ch">No bitmaps. Every world element is procedural vector drawn from theme tokens, cached per device-pixel-ratio at stage load. Sizes in world units (wu) on a 1150 × 720 field; strokes in screen px. No scanlines or glow inside the playfield except the beacon pulse.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 12px">
+        <sc-for list="{{assets}}" as="a" hint-placeholder-count="9">
+          <div style="border: 1px solid var(--hair); display: flex; flex-direction: column">
+            <div style="height: 120px; background: #08090A; border-bottom: 1px solid var(--hair); display: flex; align-items: center; justify-content: center">
+              <sc-if value="{{a.probe}}" hint-placeholder-val="{{ false }}"><svg width="100" height="90" viewBox="0 0 100 90" aria-hidden="true"><rect x="43" y="38" width="14" height="14" fill="#E8E4D8" transform="rotate(45 50 45)"></rect><circle cx="50" cy="45" r="20" fill="none" stroke="#82E6D0" opacity="0.55"></circle></svg></sc-if>
+              <sc-if value="{{a.planet}}" hint-placeholder-val="{{ true }}"><svg width="120" height="100" viewBox="0 0 120 100" aria-hidden="true"><circle cx="60" cy="50" r="32" fill="#E8E4D8"></circle><circle cx="71" cy="44" r="29" fill="#08090A" opacity="0.88"></circle><circle cx="60" cy="50" r="32" fill="none" stroke="#E8E4D8"></circle><ellipse cx="60" cy="50" rx="50" ry="11" fill="none" stroke="#E8E4D8" transform="rotate(-18 60 50)"></ellipse></svg></sc-if>
+              <sc-if value="{{a.wells}}" hint-placeholder-val="{{ false }}"><svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true"><circle cx="55" cy="55" r="50" fill="none" stroke="rgba(138,136,128,.3)" stroke-dasharray="1 6"></circle><circle cx="55" cy="55" r="36" fill="none" stroke="rgba(138,136,128,.45)" stroke-dasharray="1 5"></circle><circle cx="55" cy="55" r="24" fill="none" stroke="rgba(138,136,128,.6)" stroke-dasharray="1 4"></circle><circle cx="55" cy="55" r="14" fill="none" stroke="rgba(138,136,128,.75)" stroke-dasharray="1 3"></circle></svg></sc-if>
+              <sc-if value="{{a.hole}}" hint-placeholder-val="{{ false }}"><svg width="110" height="110" viewBox="0 0 130 130" aria-hidden="true"><circle cx="65" cy="65" r="60" fill="none" stroke="#D9604C" stroke-dasharray="2 6" opacity="0.55"></circle><path d="{{teeth}}" stroke="#D9604C" stroke-width="1.4"></path><circle cx="65" cy="65" r="16" fill="#000" stroke="#E8E4D8"></circle></svg></sc-if>
+              <sc-if value="{{a.gate}}" hint-placeholder-val="{{ false }}"><svg width="120" height="90" viewBox="0 0 120 90" aria-hidden="true"><path d="M30 75 L90 20" stroke="#E8E4D8" stroke-dasharray="3 4"></path><path d="M24 68 L36 82 M84 13 L96 27" stroke="#E8E4D8" stroke-width="2.5"></path></svg></sc-if>
+              <sc-if value="{{a.beacon}}" hint-placeholder-val="{{ false }}"><svg width="100" height="100" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="26" fill="none" stroke="#82E6D0" opacity="0.4"></circle><circle cx="50" cy="50" r="16" fill="none" stroke="#82E6D0" opacity="0.7"></circle><circle cx="50" cy="50" r="6" fill="#82E6D0"></circle><path d="M16 50H34M66 50H84M50 16V34M50 66V84" stroke="#82E6D0"></path></svg></sc-if>
+              <sc-if value="{{a.path}}" hint-placeholder-val="{{ false }}"><svg width="200" height="90" viewBox="0 0 200 90" aria-hidden="true"><path d="M10 75 C 50 65, 80 45, 100 36" stroke="#82E6D0" stroke-width="1.8" fill="none"></path><path d="M100 36 C 130 24, 160 20, 190 20" stroke="#82E6D0" stroke-width="1.5" stroke-dasharray="6 8" fill="none"></path></svg></sc-if>
+              <sc-if value="{{a.plume}}" hint-placeholder-val="{{ false }}"><svg width="100" height="90" viewBox="0 0 100 90" aria-hidden="true"><rect x="43" y="23" width="14" height="14" fill="#E8E4D8" transform="rotate(45 50 30)"></rect><path d="M50 48 V76 M43 46 L37 70 M57 46 L63 70" stroke="#E8E4D8" stroke-width="1.4"></path></svg></sc-if>
+              <sc-if value="{{a.field}}" hint-placeholder-val="{{ false }}"><svg width="200" height="100" viewBox="0 0 200 100" aria-hidden="true"><path d="M0 25H200M0 50H200M0 75H200M25 0V100M50 0V100M75 0V100M100 0V100M125 0V100M150 0V100M175 0V100" stroke="rgba(232,228,216,.06)"></path><path d="{{ruler}}" stroke="rgba(232,228,216,.35)"></path></svg></sc-if>
+            </div>
+            <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px">
+              <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em">{{a.name}}</span>
+              <span style="font-size: 12px; line-height: 1.55; color: #B9B5AA">{{a.spec}}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-labelledby="p-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="p-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">07</span>Playfield contract</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px">
+        <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--hair); font-size: 13px">
+          <sc-for list="{{layers}}" as="l" hint-placeholder-count="8">
+            <li style="display: grid; grid-template-columns: 48px 170px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--hair)"><span style="color: var(--telemetry)">{{l.z}}</span><span>{{l.name}}</span><span style="color: #B9B5AA">{{l.note}}</span></li>
+          </sc-for>
+        </ol>
+        <ul style="margin: 0; padding: 0 0 0 18px; display: grid; gap: 10px; font-size: 13px; line-height: 1.6; color: #B9B5AA; align-content: start">
+          <li>Engine mounts into <code>data-engine-canvas="playfield"</code>. CRT overlay layers sit above the whole screen at lower strength (12%) and never inside the canvas.</li>
+          <li>Phones in portrait use a 360 × 470 wu variant per stage.</li>
+          <li>World labels: SINGULARITY, GATE and the aim readout only. No planet names, no hints.</li>
+          <li>Engine → UI: <code>onTelemetry({ t, fuel, spent, phase, gates })</code> at 10 Hz; <code>onOutcome({ status, time, fuel, score, cause })</code>.</li>
+          <li>UI → engine: <code>aim</code>, <code>launch</code>, <code>burst(dir)</code>, <code>pause</code>, <code>resume</code>, <code>restart</code>, <code>setReducedMotion</code>.</li>
+          <li>Fixed-step physics (120 Hz) so scores are deterministic and replays verifiable. Unchanged from v0.1.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="m-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="m-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">08</span>Motion and access</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 32px">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px">
+          <tbody>
+            <sc-for list="{{motion}}" as="m" hint-placeholder-count="8">
+              <tr style="border-top: 1px solid var(--hair)"><td style="padding: 10px 12px 10px 0"><code>{{m.token}}</code></td><td style="padding: 10px 12px 10px 0">{{m.value}}</td><td style="padding: 10px 0; color: #B9B5AA">{{m.use}}</td></tr>
+            </sc-for>
+          </tbody>
+        </table>
+        <ul style="margin: 0; padding: 0 0 0 18px; display: grid; gap: 10px; font-size: 13px; line-height: 1.6; color: #B9B5AA; align-content: start">
+          <li>Focus: 2px mint outline, 3px offset, <code>:focus-visible</code> only.</li>
+          <li>Game keys bind only while the playfield has focus; every key has an on-screen button.</li>
+          <li>A polite live region announces launch, gate cleared, low fuel, complete, failed. Never per-tick values.</li>
+          <li>Not color alone: solid vs dashed paths, toothed horizons, ✓ / ✕, FUEL LOW label.</li>
+          <li>Auto-pause on tab hide, blur and orientation change.</li>
+          <li>Reduced motion (system or Settings): no ambient motion, no signal effects. Scanlines and vignette stay.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="r-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="r-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">09</span>Responsive</h2>
+      <div style="overflow-x: auto">
+        <table style="width: 100%; min-width: 720px; border-collapse: collapse; font-size: 13px">
+          <thead><tr style="font-size: 12px; letter-spacing: 0.12em; color: var(--telemetry); text-align: left"><th style="font-weight: 400; padding-bottom: 10px; width: 150px">WIDTH</th><th style="font-weight: 400; padding-bottom: 10px">MENUS</th><th style="font-weight: 400; padding-bottom: 10px">FLIGHT</th></tr></thead>
+          <tbody>
+            <tr style="border-top: 1px solid var(--hair)"><td style="padding: 11px 12px 11px 0">≥ 1200</td><td style="padding: 11px 12px 11px 0; color: #B9B5AA">Two columns.</td><td style="padding: 11px 0; color: #B9B5AA">Playfield + right HUD rail, control bar below.</td></tr>
+            <tr style="border-top: 1px solid var(--hair)"><td style="padding: 11px 12px 11px 0">768–1199</td><td style="padding: 11px 12px 11px 0; color: #B9B5AA">Columns stack.</td><td style="padding: 11px 0; color: #B9B5AA">HUD becomes a strip above the playfield; touch controls bottom.</td></tr>
+            <tr style="border-top: 1px solid var(--hair)"><td style="padding: 11px 12px 11px 0">&lt; 768 portrait</td><td style="padding: 11px 12px 11px 0; color: #B9B5AA">Wordmark top, menu at thumb height (01m).</td><td style="padding: 11px 0; color: #B9B5AA">3-cell HUD, portrait stage, 56px thrust cross, 120px Launch (03m).</td></tr>
+            <tr style="border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair)"><td style="padding: 11px 12px 11px 0">phone landscape</td><td style="padding: 11px 12px 11px 0; color: #B9B5AA">As portrait.</td><td style="padding: 11px 0; color: #B9B5AA">Thrust cross left edge, Launch and Pause right edge, HUD in top margin.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="cfg-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="cfg-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">10</span>Config</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); gap: 32px">
+        <pre style="margin: 0; padding: 20px; background: #08090A; border: 1px solid var(--hair); font-family: var(--mono); font-size: 13px; line-height: 1.6; color: #B9B5AA; white-space: pre-wrap">{{configCode}}</pre>
+        <ul style="margin: 0; padding: 0 0 0 18px; display: grid; gap: 10px; font-size: 13px; line-height: 1.6; color: #B9B5AA; align-content: start">
+          <li>The name renders only from <code>game.name</code>: page titles, wordmark, back links.</li>
+          <li>Score formula and burst cost unchanged from v0.1.</li>
+          <li>Daily seed: UTC date as <code>YYYYMMDD</code> into the client's deterministic stage generator.</li>
+          <li>Ranking: REST endpoint re-simulates <code>{ stage, seed, inputs[], score }</code>. No realtime services.</li>
+          <li>IA change only: personal bests and rankings live in Stats; explanations live in How to Play; Settings is an icon (Home) and lives in Pause.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="inv-h" style="display: flex; flex-direction: column; gap: 20px">
+      <h2 id="inv-h" style="margin: 0; display: flex; gap: 16px; align-items: baseline; font-family: var(--display); font-weight: 600; font-size: 32px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--hair); padding-bottom: 10px"><span style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: #82E6D0">11</span>Components</h2>
+      <div style="overflow-x: auto">
+        <table style="width: 100%; min-width: 820px; border-collapse: collapse; font-size: 13px">
+          <thead><tr style="font-size: 12px; letter-spacing: 0.12em; color: var(--telemetry); text-align: left"><th style="font-weight: 400; padding-bottom: 10px; width: 190px">COMPONENT</th><th style="font-weight: 400; padding-bottom: 10px">PROPS</th><th style="font-weight: 400; padding-bottom: 10px">STATES</th><th style="font-weight: 400; padding-bottom: 10px; width: 140px">USED IN</th></tr></thead>
+          <tbody>
+            <sc-for list="{{inventory}}" as="c" hint-placeholder-count="24">
+              <tr style="border-top: 1px solid var(--hair)"><td style="padding: 9px 12px 9px 0"><code style="color: #E8E4D8">{{c.name}}</code></td><td style="padding: 9px 12px 9px 0; color: #B9B5AA">{{c.props}}</td><td style="padding: 9px 12px 9px 0; color: #B9B5AA">{{c.states}}</td><td style="padding: 9px 0; color: var(--telemetry)">{{c.used}}</td></tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var teeth = '';
+    for (var j = 0; j < 30; j++) {
+      var b = (j * 12) * Math.PI / 180;
+      teeth += 'M' + (65 + 34 * Math.cos(b)).toFixed(1) + ' ' + (65 + 34 * Math.sin(b)).toFixed(1) + 'L' + (65 + 44 * Math.cos(b)).toFixed(1) + ' ' + (65 + 44 * Math.sin(b)).toFixed(1) + ' ';
+    }
+    var ruler = '';
+    for (var x = 0; x <= 200; x += 5) { var l = x % 25 === 0 ? 8 : 3; ruler += 'M' + x + ' 0V' + l + ' '; }
+    var A = function (key, name, spec) { var o = { name: name, spec: spec }; o[key] = true; return o; };
+    var assets = [
+      A('probe', 'PROBE', '14 wu square at 45°, Starlight. Mint halo r 20 at 55% in flight.'),
+      A('planet', 'PLANET', 'Starlight disc + Void Deep eclipse. Optional 1px ring. r 18 / 40 / 62 wu.'),
+      A('wells', 'GRAVITY RINGS', 'Dotted Telemetry rings at equal pull; tighter and brighter toward the body.'),
+      A('hole', 'SINGULARITY', 'Black disc, Starlight rim. Event horizon as Alarm teeth; pull radius dashed Alarm.'),
+      A('gate', 'GATE', '2.5px posts, dashed span. Open = dashed Starlight, closed = solid Telemetry. Cycle bar above.'),
+      A('beacon', 'BEACON', 'Mint core, two rings, crosshair. One slow pulse. The only mint body in the world.'),
+      A('path', 'TRAJECTORY', 'Flown: solid mint 1.8px. Predicted: dashed 6/8 at 1.5px, ~3 s ahead.'),
+      A('plume', 'THRUST', 'Three Starlight strokes opposite thrust, 0.28 s, 2-step flicker.'),
+      A('field', 'FIELD', 'Void Deep, 50 wu grid at 4%, edge rulers every 10 wu. No star field.')
+    ];
+    var layers = [
+      { z: 'L0', name: 'Field', note: 'Void Deep, grid, rulers' },
+      { z: 'L1', name: 'Gravity rings', note: 'Static per stage' },
+      { z: 'L2', name: 'Hazards', note: 'Singularities' },
+      { z: 'L3', name: 'Bodies, gates', note: '' },
+      { z: 'L4', name: 'Trajectory', note: 'Predicted, then flown' },
+      { z: 'L5', name: 'Probe, thrust', note: 'Topmost world object' },
+      { z: 'L6', name: 'World labels', note: '13px screen size' },
+      { z: 'DOM', name: 'Interface + CRT', note: 'HUD, controls, overlays, scanlines' }
+    ];
+    var motion = [
+      { token: 'dur.instant', value: '80 ms', use: 'Press, thrust key flash' },
+      { token: 'dur.quick', value: '160 ms', use: 'Hover, row highlight' },
+      { token: 'dur.signal', value: '320–700 ms', use: 'Stepped entry: screens, pause, result' },
+      { token: 'dur.ring', value: '1400 ms × 1', use: 'Beacon ring on complete' },
+      { token: 'ease.settle', value: 'cubic-bezier(.2,.7,.2,1)', use: 'Hover, ring' },
+      { token: 'ease.signal', value: 'steps(5–9)', use: 'Signal instability' },
+      { token: 'ambient.orbit', value: '34–96 s linear', use: 'Home only' },
+      { token: 'ambient.flow', value: '2.4–3.2 s linear', use: 'Predicted path dashes' }
+    ];
+    var configCode = [
+      '// game.config.ts',
+      "export const game = {",
+      "  name: 'VOID',",
+      '  score: { perSecond: 10, perFuelUnit: 25 },',
+      '  burst: { cost: 2.4, duration: 0.28 },',
+      '};',
+      '',
+      'export const theme = {',
+      "  void: '#0E0F10', voidDeep: '#08090A', voidRaised: '#18191B',",
+      "  starlight: '#E8E4D8', starlightDim: '#B9B5AA',",
+      "  telemetry: '#8A8880',",
+      "  flare: '#82E6D0',   // accent (mint)",
+      "  alarm: '#D9604C',   // danger only",
+      "  hair: 'rgba(232,228,216,.10)', hairStrong: 'rgba(232,228,216,.24)',",
+      "  font: { display: 'Barlow Condensed', ui: 'IBM Plex Mono' },",
+      "  crt: { scanline: .18, scanlineInGame: .12, vignette: .5 },",
+      '};'
+    ].join('\n');
+    var I = function (name, props, states, used) { return { name: name, props: props, states: states, used: used }; };
+    var inventory = [
+      I('Screen', 'crt, signalOnEnter', 'live · still', 'All'),
+      I('CrtOverlay', 'strength', '—', 'All'),
+      I('Wordmark', 'name (game.name)', '—', 'Home'),
+      I('OrbitalHero', 'reducedMotion', 'animated · still', 'Home'),
+      I('MenuRow', 'label, meta, href, active', 'rest hover focus active', 'Home'),
+      I('SettingsPopover', 'sound, reducedMotion', 'open closed', 'Home'),
+      I('Button', 'variant: primary | secondary | icon', 'default hover focus pressed disabled', 'All'),
+      I('KeyCap', 'label', '—', 'Buttons'),
+      I('DailyRow', 'date, name, resetsAt', 'rest selected', 'Stages'),
+      I('StageList / StageRow', 'stage, selected', 'rest selected cleared new locked', 'Stages'),
+      I('StageDiagram', 'bodies[], path', '—', 'Stages'),
+      I('FlightScreen', 'stageId, seed', 'aim flight paused ended', 'Flight'),
+      I('Playfield', 'engine, onTelemetry, onOutcome', 'mounting ready error', 'Flight'),
+      I('Hud', 'time, fuel, spent, gates', 'normal low-fuel', 'Flight'),
+      I('FuelGauge', 'value, max', 'normal low empty', 'Flight'),
+      I('AimControls', 'angle, power', 'enabled', 'Flight'),
+      I('ThrustPad', 'layout: row | cross', 'idle firing disabled', 'Flight'),
+      I('PauseDialog', 'onResume, onRestart, onExit', 'open', 'Flight'),
+      I('ResultScreen', 'status, time, fuel, score', 'complete failed', 'Result'),
+      I('StatusTag', 'kind: complete | failed', '—', 'Result'),
+      I('FlightTrace', 'path, end', 'complete failed', 'Result'),
+      I('Tabs', 'tabs, value', 'selected focus', 'Stats'),
+      I('RankTable', 'rows, pinned', 'default you', 'Stats'),
+      I('PersonalPanel', 'totals, bests, recent', '—', 'Stats'),
+      I('DataState', 'kind: sample | loading | empty | unavailable', '—', 'Stats'),
+      I('HelpSection', 'n, title, diagram', '—', 'How to Play'),
+      I('ControlTable / TermList', 'rows', '—', 'How to Play')
+    ];
+    return { assets: assets, teeth: teeth, ruler: ruler, layers: layers, motion: motion, configCode: configCode, inventory: inventory };
+  }
+}
+</script>
+</body>
+</html>

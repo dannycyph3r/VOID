@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VOID · Flight, phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<style>
+:root{--void:#0E0F10;--starlight:#E8E4D8;--telemetry:#8A8880;--flare:#82E6D0;--alarm:#D9604C;--hair:rgba(232,228,216,.10);--hair-strong:rgba(232,228,216,.24);--display:'Barlow Condensed','Arial Narrow',sans-serif;--mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+body{margin:0;background:#0E0F10}
+a{color:#E8E4D8;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid #82E6D0;outline-offset:2px}
+.v-fx{position:absolute;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.12) 3px)}
+.v-key:active{background:#82E6D0 !important;color:#0E0F10 !important}
+.v-glow{text-shadow:0 0 10px rgba(130,230,208,.35)}
+@keyframes v-flow{to{stroke-dashoffset:-56}}
+.v-flow{animation:v-flow 2.4s linear infinite}
+@media (prefers-reduced-motion: reduce){.v-flow{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0E0F10; color: #E8E4D8; font-family: var(--mono); display: flex; flex-direction: column; gap: 10px; padding: 8px 12px 16px; position: relative; overflow: hidden">
+  <div class="v-fx"></div>
+
+  <header style="display: flex; align-items: center; justify-content: space-between; height: 48px">
+    <button type="button" aria-label="Pause" onClick="{{pause}}" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--hair-strong); color: #E8E4D8; cursor: pointer">
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2" y="1" width="3" height="12"></rect><rect x="9" y="1" width="3" height="12"></rect></svg>
+    </button>
+    <div style="display: flex; align-items: baseline; gap: 10px">
+      <span style="font-size: 12px; letter-spacing: 0.14em; color: var(--telemetry)">02</span>
+      <span style="font-family: var(--display); font-weight: 600; font-size: 24px; letter-spacing: 0.08em; text-transform: uppercase">Slingshot</span>
+    </div>
+    <button type="button" aria-label="Restart" onClick="{{restart}}" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--hair-strong); color: #E8E4D8; cursor: pointer">
+      <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2.5 7a4.5 4.5 0 1 0 1.4-3.3M2.5 1.5v3h3"></path></svg>
+    </button>
+  </header>
+
+  <div aria-label="Telemetry" style="display: grid; grid-template-columns: 1.2fr 1fr 0.8fr; border: 1px solid var(--hair)">
+    <div style="padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--hair)">
+      <span style="font-size: 12px; letter-spacing: 0.12em; color: var(--telemetry)">TIME</span>
+      <span class="v-glow" style="font-size: 19px; font-weight: 500; font-variant-numeric: tabular-nums; color: #82E6D0">{{timeText}}</span>
+    </div>
+    <div style="padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid var(--hair)">
+      <span style="font-size: 12px; letter-spacing: 0.12em; color: var(--telemetry)">FUEL <span style="color: #E8E4D8; font-variant-numeric: tabular-nums">{{fuelText}}</span></span>
+      <div role="meter" aria-label="Fuel remaining" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{fuelNow}}" style="height: 8px; background: rgba(232,228,216,.1); position: relative"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{fuelPct}}%; background: #E8E4D8"></div></div>
+    </div>
+    <div style="padding: 8px 10px; display: flex; flex-direction: column; gap: 2px">
+      <span style="font-size: 12px; letter-spacing: 0.12em; color: var(--telemetry)">SPENT</span>
+      <span style="font-size: 19px; font-weight: 500; font-variant-numeric: tabular-nums">{{spentText}}</span>
+    </div>
+  </div>
+
+  <section data-engine-canvas="playfield" aria-label="Playfield" style="flex: 1 1 auto; position: relative; background: #08090A; border: 1px solid var(--hair-strong); min-height: 0">
+    <svg viewBox="0 0 360 470" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Stage 02: probe, planet, gate, singularity, beacon" style="position: absolute; inset: 0; width: 100%; height: 100%">
+      <path d="M6 6h12M6 6v12M354 6h-12M354 6v12M6 464h12M6 464v-12M354 464h-12M354 464v-12" stroke="rgba(232,228,216,.35)"></path>
+      <circle cx="170" cy="300" r="104" fill="none" stroke="rgba(138,136,128,.36)" stroke-dasharray="1 5"></circle>
+      <circle cx="170" cy="300" r="70" fill="none" stroke="rgba(138,136,128,.58)" stroke-dasharray="1 3"></circle>
+      <circle cx="170" cy="300" r="40" fill="#E8E4D8"></circle>
+      <circle cx="184" cy="292" r="37" fill="#08090A" opacity="0.88"></circle>
+      <circle cx="170" cy="300" r="40" fill="none" stroke="#E8E4D8"></circle>
+      <path d="{{teeth}}" stroke="#D9604C" stroke-width="1.3"></path>
+      <circle cx="80" cy="150" r="13" fill="#000" stroke="#E8E4D8"></circle>
+      <path d="M212 118 L250 84" stroke="#E8E4D8" stroke-dasharray="3 3"></path>
+      <path d="M207 113 L217 123 M245 79 L255 89" stroke="#E8E4D8" stroke-width="2.5"></path>
+      <circle cx="306" cy="46" r="5" fill="#82E6D0"></circle>
+      <circle cx="306" cy="46" r="15" fill="none" stroke="#82E6D0"></circle>
+      <path d="M50 446 H80 M50 446 V436 M80 446 V436" stroke="#E8E4D8"></path>
+      <text x="44" y="200" fill="#D9604C" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1.2">SINGULARITY</text>
+      <sc-if value="{{isAim}}" hint-placeholder-val="{{ true }}">
+        <path class="v-flow" d="M65 432 C 120 416, 196 386, 230 336 C 256 296, 240 240, 232 196" fill="none" stroke="#82E6D0" stroke-width="1.5" stroke-dasharray="6 8"></path>
+        <path d="M65 432 L130 404 M120 400 L130 404 L124 413" stroke="#E8E4D8" stroke-width="1.2" fill="none"></path>
+        <text x="136" y="396" fill="#E8E4D8" font-family="IBM Plex Mono, monospace" font-size="12">24° · 64%</text>
+        <rect x="59" y="426" width="12" height="12" fill="#E8E4D8" transform="rotate(45 65 432)"></rect>
+      </sc-if>
+      <sc-if value="{{isFlight}}" hint-placeholder-val="{{ false }}">
+        <path d="M65 432 C 120 416, 196 386, 230 336" fill="none" stroke="#82E6D0" stroke-width="1.8"></path>
+        <path class="v-flow" d="M230 336 C 256 296, 240 240, 232 196 C 224 150, 222 120, 231 101 C 250 70, 280 52, 306 46" fill="none" stroke="#82E6D0" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.75"></path>
+        <sc-if value="{{firing}}" hint-placeholder-val="{{ false }}"><path d="{{plume}}" stroke="#E8E4D8" stroke-width="1.4"></path></sc-if>
+        <rect x="224" y="330" width="12" height="12" fill="#E8E4D8" transform="rotate(45 230 336)"></rect>
+        <circle cx="230" cy="336" r="15" fill="none" stroke="#82E6D0" opacity="0.55"></circle>
+      </sc-if>
+    </svg>
+  </section>
+
+  <div style="display: grid; grid-template-columns: 168px 1fr; gap: 14px; align-items: center">
+    <div role="group" aria-label="Thrusters" style="display: grid; grid-template-columns: repeat(3, 56px); grid-template-rows: repeat(3, 56px); opacity: {{padOpacity}}">
+      <span></span>
+      <button class="v-key" type="button" aria-label="Thrust up" onClick="{{up}}" disabled="{{isAim}}" style="background: transparent; border: 1px solid var(--hair-strong); color: #E8E4D8; font-size: 18px; font-family: var(--mono)">↑</button>
+      <span></span>
+      <button class="v-key" type="button" aria-label="Thrust left" onClick="{{left}}" disabled="{{isAim}}" style="background: transparent; border: 1px solid var(--hair-strong); color: #E8E4D8; font-size: 18px; font-family: var(--mono)">←</button>
+      <span aria-hidden="true" style="display: flex; align-items: center; justify-content: center"><span style="width: 6px; height: 6px; background: {{coreColor}}"></span></span>
+      <button class="v-key" type="button" aria-label="Thrust right" onClick="{{right}}" disabled="{{isAim}}" style="background: transparent; border: 1px solid var(--hair-strong); color: #E8E4D8; font-size: 18px; font-family: var(--mono)">→</button>
+      <span></span>
+      <button class="v-key" type="button" aria-label="Thrust down" onClick="{{down}}" disabled="{{isAim}}" style="background: transparent; border: 1px solid var(--hair-strong); color: #E8E4D8; font-size: 18px; font-family: var(--mono)">↓</button>
+      <span></span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <sc-if value="{{isAim}}" hint-placeholder-val="{{ true }}">
+        <button type="button" onClick="{{launch}}" style="height: 120px; background: #82E6D0; color: #0E0F10; border: 0; font-family: var(--mono); font-size: 14px; font-weight: 600; letter-spacing: 0.2em; cursor: pointer">LAUNCH</button>
+      </sc-if>
+      <sc-if value="{{isFlight}}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; letter-spacing: 0.12em">
+          <span style="display: flex; gap: 8px; align-items: center"><span style="width: 9px; height: 9px; border: 1px solid #E8E4D8"></span>GATE</span>
+          <span style="display: flex; gap: 8px; align-items: center"><span style="width: 9px; height: 9px; border: 1px solid #82E6D0; border-radius: 50%"></span>BEACON</span>
+        </div>
+        <a href="ResultMobile.dc.html" style="min-height: 44px; display: flex; align-items: center; justify-content: center; border: 1px dashed rgba(138,136,128,.6); font-size: 12px; letter-spacing: 0.12em; color: var(--telemetry)">PROTO · ARRIVE</a>
+      </sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{paused}}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Paused" style="position: absolute; inset: 0; z-index: 30; background: rgba(8,9,10,.9); display: flex; flex-direction: column; justify-content: center; padding: 24px; gap: 10px">
+      <h2 style="margin: 0 0 14px; font-family: var(--display); font-weight: 600; font-size: 44px; letter-spacing: 0.1em; text-transform: uppercase">Paused</h2>
+      <button type="button" onClick="{{resume}}" style="height: 56px; background: #82E6D0; color: #0E0F10; border: 0; font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.18em; cursor: pointer">RESUME</button>
+      <button type="button" onClick="{{restart}}" style="height: 56px; background: transparent; color: #E8E4D8; border: 1px solid var(--hair-strong); font-family: var(--mono); font-size: 13px; letter-spacing: 0.18em; cursor: pointer">RESTART</button>
+      <a href="Missions.dc.html" style="height: 56px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--hair-strong); font-size: 13px; letter-spacing: 0.18em">STAGES</a>
+      <a href="HowTo.dc.html" style="height: 48px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--telemetry)">How to Play</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { phase: 'aim', elapsed: 0, fuel: 100, firing: null, paused: false };
+  }
+  componentDidMount() {
+    this._t = setInterval(() => { if (this.state.phase === 'flight' && !this.state.paused) this.setState({ elapsed: this.state.elapsed + 0.1 }); }, 100);
+  }
+  componentWillUnmount() { clearInterval(this._t); clearTimeout(this._f); }
+  burst(dir) {
+    if (this.state.fuel < 2.4 || this.state.paused) return;
+    clearTimeout(this._f);
+    this.setState({ fuel: this.state.fuel - 2.4, firing: dir });
+    this._f = setTimeout(() => this.setState({ firing: null }), 280);
+  }
+  renderVals() {
+    var s = this.state, self = this;
+    var teeth = '';
+    for (var j = 0; j < 30; j++) {
+      var b = (j * 12) * Math.PI / 180;
+      teeth += 'M' + (80 + 28 * Math.cos(b)).toFixed(1) + ' ' + (150 + 28 * Math.sin(b)).toFixed(1) + 'L' + (80 + 37 * Math.cos(b)).toFixed(1) + ' ' + (150 + 37 * Math.sin(b)).toFixed(1) + ' ';
+    }
+    var plumes = { up: 'M230 352V376 M224 350L219 368 M236 350L241 368', down: 'M230 320V296 M224 322L219 304 M236 322L241 304', left: 'M246 336H270 M248 330L264 325 M248 342L264 347', right: 'M214 336H190 M212 330L196 325 M212 342L196 347' };
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var m = Math.floor(s.elapsed / 60), sec = s.elapsed - m * 60;
+    var low = s.fuel < 20;
+    return {
+      teeth: teeth,
+      isAim: s.phase === 'aim', isFlight: s.phase === 'flight', paused: s.paused,
+      firing: !!s.firing, plume: s.firing ? plumes[s.firing] : '',
+      coreColor: s.firing ? '#82E6D0' : 'rgba(232,228,216,.25)',
+      timeText: pad(m) + ':' + (sec < 10 ? '0' : '') + sec.toFixed(1),
+      fuelText: s.fuel.toFixed(1), fuelNow: Math.round(s.fuel), fuelPct: s.fuel.toFixed(1),
+      spentText: (100 - s.fuel).toFixed(1),
+      padOpacity: s.phase === 'aim' ? '0.35' : '1',
+      launch: function () { self.setState({ phase: 'flight', elapsed: 0 }); },
+      pause: function () { self.setState({ paused: true }); },
+      resume: function () { self.setState({ paused: false }); },
+      restart: function () { self.setState({ phase: 'aim', elapsed: 0, fuel: 100, firing: null, paused: false }); },
+      up: function () { self.burst('up'); }, down: function () { self.burst('down'); },
+      left: function () { self.burst('left'); }, right: function () { self.burst('right'); }
+    };
+  }
+}
+</script>
+</body>
+</html>
